@@ -1,0 +1,13 @@
+## Important Note
+- Disected Data from Music CSV file just to lower the the number
+of instrument being populated in the Instrument Model Table
+
+## Dataset Sources
+Provincial Sales Tax:
+https://www.retailcouncil.org/resources/quick-facts/sales-tax-rates-by-province/
+
+Music Data:
+https://www.kaggle.com/datasets/lasaljaywardena/music-instrument-images-dataset
+
+Artist Data:
+https://www.kaggle.com/datasets/revilrosa/music-label-dataset?select=artists.csv

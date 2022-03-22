@@ -14,6 +14,7 @@ InstrumentType.destroy_all
 Instrument.destroy_all
 Type.destroy_all
 
+Tax.destroy_all
 Province.destroy_all
 
 ## Set up CSV file to extract the data
@@ -62,7 +63,19 @@ provinces.each do | p |
   )
 
   unless province.valid?
-    puts "Invalid province #{p["Name"]}"
+    puts "Invalid Province #{province.name}"
+    next
+  end
+
+  tax = province.create_tax(
+    pst: p["PST"],
+    gst: p["GST"],
+    hst: p["HST"],
+    totaltax: p["Total Tax Rate"]
+  )
+
+  unless tax.valid?
+    puts "Invalid Province Sales Tax for #{province.name} PST:#{tax.pst} GST:#{tax.gst} HST:#{tax.hst} Total:#{tax.totaltax}"
     next
   end
 end
@@ -73,5 +86,6 @@ puts "Created #{Instrument.count} Instruments"
 puts "Created #{InstrumentType.count} Instrument Types"
 
 puts "Created #{Province.count} Provinces"
+puts "Created #{Tax.count} Sales Tax"
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
