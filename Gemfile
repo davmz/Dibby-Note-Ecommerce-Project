@@ -74,3 +74,6 @@ end
 # ActiveAdmin Gem
 gem 'activeadmin'
 gem 'devise'
+
+# Faker Gem
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
