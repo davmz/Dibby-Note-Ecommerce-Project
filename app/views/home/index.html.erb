@@ -3,3 +3,21 @@
 
 
 <p>Can't wait for the finished application :) - March 21, 2022</p>
+
+<h2>Instrument Types</h2>
+<ul>
+  <% @instrumentypes.each do | instrumenttype |%>
+    <li>
+      <%= instrumenttype.name %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Instruments</h2>
+<ul>
+  <% @instrumentypes.each do | instrumenttype |%>
+    <li>
+      <%= instrumenttype.name %>
+    </li>
+  <% end %>
+</ul>
