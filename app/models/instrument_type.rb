@@ -1,6 +1,4 @@
 class InstrumentType < ApplicationRecord
-  has_many :instruments
-
-  validates :name, presence: true
-  validates :name, uniqueness: true
+  belongs_to :type
+  belongs_to :instrument
 end

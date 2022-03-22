@@ -1,7 +1,8 @@
 class Instrument < ApplicationRecord
-  belongs_to :instrumenttype
+  has_many :instrument_types
+  has_many :types, through: :instrument_types
 
+  # Validation
   validates :name, :price, presence: true
-  validates :name, uniqueness: true
   validates :price, numericality: true
 end
