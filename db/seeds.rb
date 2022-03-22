@@ -10,6 +10,8 @@ require "csv"
 ## Destory Model Tables
 AdminUser.destroy_all
 
+Lesson.destroy_all
+
 InstrumentType.destroy_all
 Instrument.destroy_all
 Type.destroy_all

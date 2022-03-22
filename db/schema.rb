@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_22_184940) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_22_192220) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -54,6 +54,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_22_184940) do
     t.index ["name"], name: "index_instruments_on_name"
   end
 
+  create_table "lessons", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.integer "instrument_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instrument_id"], name: "index_lessons_on_instrument_id"
+  end
+
   create_table "provinces", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -81,5 +90,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_22_184940) do
 
   add_foreign_key "instrument_types", "instruments"
   add_foreign_key "instrument_types", "types"
+  add_foreign_key "lessons", "instruments"
   add_foreign_key "taxes", "provinces"
 end

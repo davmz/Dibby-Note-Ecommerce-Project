@@ -3,4 +3,5 @@ class Tax < ApplicationRecord
 
   # Validation
   validates :totaltax, presence: true
+  validates :pst, :gst, :hst, :totaltax, numericality: true
 end
