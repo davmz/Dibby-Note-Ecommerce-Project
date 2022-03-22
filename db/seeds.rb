@@ -11,8 +11,6 @@ require "csv"
 AdminUser.destroy_all
 
 Lesson.destroy_all
-
-InstrumentType.destroy_all
 Instrument.destroy_all
 Type.destroy_all
 
@@ -35,26 +33,27 @@ provinces = CSV.parse(province_csv_data, headers:true, encoding: "utf-8")
 
 ## Loop through the CSV to populate the Model Tables
 instruments.each do | i |
-  instrument = Instrument.create(
-    name: i["Label"],
-    price: Faker::Number.decimal(l_digits: 3, r_digits: 2)
-  )
+  type = Type.find_or_create_by(name: i["Instrument_Type"])
 
-  unless instrument.valid?
-    puts "Invalid instrument #{i["Label"]}"
-    next
-  end
-
-  types = i["Instrument_Type"].split(" / ").map(&:strip)
-
-  types.each do | t |
-    ## Populate our Type Model
-    type = Type.find_or_create_by(name: t)
-
-    InstrumentType.create(
-      type: type,
-      instrument: instrument
+  if type && type.valid?
+    instrument = type.instrument.create(
+      name: i["Label"],
+      price: Faker::Number.decimal(l_digits: 3, r_digits: 2)
     )
+
+    unless instrument.valid?
+      puts "Invalid Instrument #{instrument.name} for type #{type.name}"
+      next
+    end
+
+    lesson = instrument.create_lesson(
+      price: Faker::Number.decimal(l_digits: 1, r_digits: 2)
+    )
+
+    unless lesson.valid?
+      puts "Invalid Instrument Lesson for #{instrument.name}"
+      next
+    end
   end
 end
 
@@ -85,7 +84,7 @@ end
 ## Creation Model Table Counter
 puts "Created #{Type.count} Types"
 puts "Created #{Instrument.count} Instruments"
-puts "Created #{InstrumentType.count} Instrument Types"
+puts "Created #{Lesson.count} Lessons"
 
 puts "Created #{Province.count} Provinces"
 puts "Created #{Tax.count} Sales Tax"

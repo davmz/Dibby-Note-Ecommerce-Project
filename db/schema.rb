@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_22_192220) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_22_195023) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -37,25 +37,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_22_192220) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "instrument_types", force: :cascade do |t|
-    t.integer "type_id", null: false
-    t.integer "instrument_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["instrument_id"], name: "index_instrument_types_on_instrument_id"
-    t.index ["type_id"], name: "index_instrument_types_on_type_id"
-  end
-
   create_table "instruments", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
+    t.integer "type_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_instruments_on_name"
+    t.index ["type_id"], name: "index_instruments_on_type_id"
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.string "name"
     t.decimal "price"
     t.integer "instrument_id", null: false
     t.datetime "created_at", null: false
@@ -85,11 +76,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_22_192220) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_types_on_name"
   end
 
-  add_foreign_key "instrument_types", "instruments"
-  add_foreign_key "instrument_types", "types"
+  add_foreign_key "instruments", "types"
   add_foreign_key "lessons", "instruments"
   add_foreign_key "taxes", "provinces"
 end
