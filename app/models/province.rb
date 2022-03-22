@@ -1,4 +1,4 @@
 class Province < ApplicationRecord
   # Validation
-  validates :name, presence:true
+  validates :name, :code, presence: true, uniqueness: true
 end
