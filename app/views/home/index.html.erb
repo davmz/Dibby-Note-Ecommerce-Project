@@ -3,3 +3,43 @@
 
 
 <p>Can't wait for the finished application :) - March 21, 2022</p>
+
+<ul>
+  <% @instruments.each do | instrument |%>
+    <li>
+      <%= instrument.name %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @types.each do | type |%>
+    <li>
+      <%= type.name %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @lessons.each do | lesson |%>
+    <li>
+      <%= lesson.price %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @provinces.each do | province |%>
+    <li>
+      <%= province.name %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @taxes.each do | tax |%>
+    <li>
+      <%= tax.totaltax %>
+    </li>
+  <% end %>
+</ul>
