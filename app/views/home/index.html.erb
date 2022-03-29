@@ -10,7 +10,7 @@
       <%= instrument.name %>
 
       <% if instrument.image.present? %>
-        <%= image_tag instrument.image %>
+        <%= image_tag instrument.image, alt: instrument.name %>
       <% end %>
     </li>
   <% end %>
