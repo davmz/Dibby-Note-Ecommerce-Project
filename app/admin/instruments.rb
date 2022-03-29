@@ -14,5 +14,6 @@ ActiveAdmin.register Instrument do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
+  permit_params :name, :price, :type_id
 end
