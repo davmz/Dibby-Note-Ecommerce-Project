@@ -5,4 +5,7 @@ class Instrument < ApplicationRecord
   # Validation
   validates :name, :price, presence: true
   validates :price, numericality: true
+
+  # Active Storage
+  has_one_attached :image
 end
