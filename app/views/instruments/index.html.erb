@@ -1,0 +1,13 @@
+<h1>DibbyNote Store</h1>
+
+<ul>
+  <% @instruments.each do | instrument |%>
+    <li>
+      <%= instrument.name %>
+
+      <% if instrument.image.present? %>
+        <%= image_tag instrument.image, alt: instrument.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

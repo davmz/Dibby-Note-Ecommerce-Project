@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   get "contact" => "pages#contact", as: "contact"
   get "faq" => "pages#faq", as: "faq"
 
+  resources :instruments, only: [:index, :show]
+
   root to: "home#index"
 end
