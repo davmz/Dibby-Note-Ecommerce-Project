@@ -1,0 +1,12 @@
+<h1><%= @type.name %></h1>
+
+<ul>
+  <% @type.instrument.each do | instrument | %>
+    <li>
+      <%= instrument.name %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Types", types_path %>
+<%= link_to "Home", root_path %>

@@ -1,0 +1,16 @@
+<h1><%= @instrument.name %></h1>
+
+<% if @instrument.image.present? %>
+  <%= image_tag @instrument.image, alt: @instrument.name %>
+<% end %>
+
+<p>
+  <%= @instrument.price %>
+</p>
+
+<p>
+  <%= link_to @instrument.type.name, type_path(@instrument.type_id) %>
+</p>
+
+<%= link_to "Home", root_path%>
+<%= link_to "Instruments", instruments_path %>

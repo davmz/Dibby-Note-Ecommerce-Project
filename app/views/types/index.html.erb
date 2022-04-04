@@ -1,0 +1,11 @@
+<h1>DibbyNote Store</h1>
+
+<ul>
+  <% @types.each do | type |%>
+    <li>
+      <%= link_to type.name, type %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Home", root_path %>

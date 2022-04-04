@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "faq" => "pages#faq", as: "faq"
 
   resources :instruments, only: [:index, :show]
+  resources :types, only: [:index, :show]
 
   root to: "home#index"
 end

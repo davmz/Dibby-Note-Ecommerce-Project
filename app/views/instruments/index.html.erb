@@ -3,7 +3,7 @@
 <ul>
   <% @instruments.each do | instrument |%>
     <li>
-      <%= instrument.name %>
+      <%= link_to instrument.name, instrument %>
 
       <% if instrument.image.present? %>
         <%= image_tag instrument.image, alt: instrument.name %>
