@@ -9,6 +9,7 @@ require "csv"
 
 ## Destory Model Tables
 AdminUser.destroy_all
+Page.destroy_all
 
 Lesson.destroy_all
 Instrument.destroy_all
@@ -86,6 +87,18 @@ provinces.each do | p |
   end
 end
 
+Page.create(
+  title: "About",
+  content: "Made by me",
+  permalink: "about"
+)
+
+Page.create(
+  title: "Contact",
+  content: "Message us for any concerns and acquiries.",
+  permalink: "contact"
+)
+
 ## Creation Model Table Counter
 puts "Created #{Type.count} Types"
 puts "Created #{Instrument.count} Instruments"
@@ -93,5 +106,6 @@ puts "Created #{Lesson.count} Lessons"
 
 puts "Created #{Province.count} Provinces"
 puts "Created #{Tax.count} Sales Tax"
+puts "Created #{Page.count} Pages"
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

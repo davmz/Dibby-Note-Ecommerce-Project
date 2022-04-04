@@ -71,7 +71,7 @@ group :test do
   gem "webdrivers"
 end
 
-`# ActiveAdmin Gem
+# ActiveAdmin Gem
 gem 'activeadmin'
 gem 'devise'
 
@@ -79,4 +79,4 @@ gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 ## Image Processing
-gem 'image_processing'`
+gem 'image_processing'
