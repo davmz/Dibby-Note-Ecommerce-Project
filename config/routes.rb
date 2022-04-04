@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :instruments, only: [:index, :show]
   resources :types, only: [:index, :show]
+  resources :lessons, only: [:index, :show]
 
   root to: "home#index"
 end

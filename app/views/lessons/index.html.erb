@@ -1,0 +1,11 @@
+<h1>DibbyNote Lessons</h1>
+
+<ul>
+  <% @lessons.each do | lesson |%>
+    <li>
+      <%= link_to lesson.instrument.name, lesson %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Home", root_path %>
