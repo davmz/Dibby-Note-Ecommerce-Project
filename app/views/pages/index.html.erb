@@ -5,7 +5,8 @@
 <div id="pages">
   <% @pages.each do |page| %>
     <%= render page %>
+    <p>
+      <%= link_to "Show this page", permalink_path(page.permalink) %>
+    </p>
   <% end %>
 </div>
-
-<%= link_to "New page", new_page_path %>

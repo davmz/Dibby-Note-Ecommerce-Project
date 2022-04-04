@@ -89,7 +89,7 @@ end
 
 Page.create(
   title: "About",
-  content: "Made by me",
+  content: "Made by me, @davmz",
   permalink: "about"
 )
 
@@ -97,6 +97,12 @@ Page.create(
   title: "Contact",
   content: "Message us for any concerns and acquiries.",
   permalink: "contact"
+)
+
+Page.create(
+  title: "FAQ",
+  content: "How DibbyNote was made: Ruby on Rails.",
+  permalink: "faq"
 )
 
 ## Creation Model Table Counter

@@ -9,5 +9,7 @@ class HomeController < ApplicationController
     @provinces = Province.all
 
     @taxes = Tax.all
+
+    @pages = Page.all
   end
 end

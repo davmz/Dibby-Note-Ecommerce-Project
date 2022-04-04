@@ -2,10 +2,10 @@
 
 one:
   title: MyString
-  content: MyText
+  context: MyText
   permalink: MyString
 
 two:
   title: MyString
-  content: MyText
+  context: MyText
   permalink: MyString
