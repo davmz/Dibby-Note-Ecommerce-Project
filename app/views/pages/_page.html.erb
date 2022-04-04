@@ -3,6 +3,7 @@
 
   <h3><%= page.content %></h3>
 
-
-  <%= link_to "Home", root_path %>
+  <% if !current_page?(pages_path) %>
+    <%= link_to "Home", root_path %>
+  <% end %>
 </div>
