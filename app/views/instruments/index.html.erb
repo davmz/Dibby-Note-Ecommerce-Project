@@ -1,9 +1,29 @@
 <h1>DibbyNote Store</h1>
 
+<nav>
+  <p>Filter Instrument</p>
+
+  <ul>
+    <li>
+      <%= link_to "All", instruments_path, class: "button" %>
+    </li>
+
+    <li>
+      <%= link_to "Last Updated", instruments_path(instrument_filter: "Last-Updated"), class: "button" %>
+    </li>
+
+    <li>
+      <%= link_to "New", instruments_path(instrument_filter: "New-Instrument"), class: "button" %>
+    </li>
+  </ul>
+</nav>
+
 <ul>
   <% @instruments.each do | instrument |%>
     <li>
-      <%= link_to instrument.name, instrument %>
+      <p>
+        <%= link_to instrument.name, instrument %>
+      </p>
 
       <% if instrument.image.present? %>
         <%= image_tag instrument.image, alt: instrument.name %>
