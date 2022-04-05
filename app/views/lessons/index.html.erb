@@ -20,12 +20,22 @@
   </ul>
 </nav>
 
+<%= paginate @lessons %>
+
 <ul>
   <% @lessons.each do | lesson |%>
     <li>
-      <%= link_to lesson.instrument.name, lesson %>
+      <p>
+        <%= link_to lesson.instrument.name, lesson %>
+      </p>
+
+      <% if lesson.instrument.image.present? %>
+        <%= image_tag lesson.instrument.image, alt: lesson.instrument.name %>
+      <% end %>
     </li>
   <% end %>
 </ul>
+
+<%= paginate @lessons %>
 
 <%= link_to "Home", root_path %>
