@@ -7,7 +7,10 @@ class InstrumentsController < ApplicationController
         @instruments = Instrument.where("updated_at >= ?", Time.zone.now.beginning_of_day)
       end
     else
-      @instruments = Instrument.includes(:type).all.order("price asc")
+      @instruments = Instrument.includes(:type)
+                              .all.order("price ASC")
+                              .page(params[:page])
+                              .per(5)
     end
   end
 

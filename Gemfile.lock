@@ -305,6 +305,7 @@ DEPENDENCIES
   image_processing
   importmap-rails
   jbuilder
+  kaminari
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
   sassc-rails

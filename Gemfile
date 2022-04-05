@@ -80,3 +80,6 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 ## Image Processing
 gem 'image_processing'
+
+## Pagination using Kaminari
+gem 'kaminari'

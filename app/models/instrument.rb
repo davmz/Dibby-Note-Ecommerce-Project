@@ -1,4 +1,6 @@
 class Instrument < ApplicationRecord
+  # paginates_per 10
+
   belongs_to :type
   has_one :lesson
 

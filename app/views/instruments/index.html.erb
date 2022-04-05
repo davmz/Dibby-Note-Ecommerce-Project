@@ -20,6 +20,8 @@
   </ul>
 </nav>
 
+<%= paginate @instruments %>
+
 <ul>
   <% @instruments.each do | instrument |%>
     <li>
@@ -33,3 +35,5 @@
     </li>
   <% end %>
 </ul>
+
+<%= paginate @instruments %>
