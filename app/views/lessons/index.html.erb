@@ -1,5 +1,23 @@
 <h1>DibbyNote Lessons</h1>
 
+<nav>
+  <p>Filter Lessons</p>
+
+  <ul>
+    <li>
+      <%= link_to "All", instruments_path, class: "button" %>
+    </li>
+
+    <li>
+      <%= link_to "Last Updated", instruments_path(lesson_filter: "Last-Updated"), class: "button" %>
+    </li>
+
+    <li>
+      <%= link_to "New", instruments_path(lesson_filter: "New-Lesson"), class: "button" %>
+    </li>
+  </ul>
+</nav>
+
 <ul>
   <% @lessons.each do | lesson |%>
     <li>
