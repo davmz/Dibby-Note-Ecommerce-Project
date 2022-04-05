@@ -3,7 +3,7 @@
 <ul>
   <% @type.instrument.each do | instrument | %>
     <li>
-      <%= instrument.name %>
+      <%= link_to instrument.name, instrument_path(instrument.id) %>
     </li>
   <% end %>
 </ul>

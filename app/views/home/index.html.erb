@@ -4,33 +4,67 @@
 
 <p>Can't wait for the finished application :) - March 21, 2022</p>
 
-<ul>
-  <% @instruments.each do | instrument |%>
-    <li>
-      <%= instrument.name %>
+<div>
+    <h2>
+      <%= link_to "Instrument Categories", types_path %>
+    </h2>
 
-      <% if instrument.image.present? %>
-        <%= image_tag instrument.image, alt: instrument.name %>
+  <div>
+    <ul>
+      <% @types.each do | type |%>
+        <li>
+          <div>
+            <%= link_to type.name, type_path(type.id) %> - (<%= type.instrument.count %>)
+          </div>
+        </li>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    </ul>
+  </div>
+</div>
 
-<ul>
-  <% @types.each do | type |%>
-    <li>
-      <%= type.name %>
-    </li>
-  <% end %>
-</ul>
+<div>
+  <div>
+    <h2>
+      <%= link_to "Instrument Lessons", lessons_path %>
+    </h2>
+  </div>
 
-<ul>
-  <% @lessons.each do | lesson |%>
-    <li>
-      <%= lesson.price %>
-    </li>
-  <% end %>
-</ul>
+  <div>
+    <ul>
+      <% @lessons.each do | lesson |%>
+        <li>
+          <div>
+            <%= link_to lesson.instrument.name, lesson_path(lesson.id) %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <h2>
+    <%= link_to "Top Instrument", instruments_path %>
+  </h2>
+
+  <div>
+    <ul>
+      <% @instruments.each do | instrument |%>
+        <li>
+          <div>
+            <%= link_to instrument.name, instrument_path(instrument.id) %>
+          </div>
+
+          <div>
+            <% if instrument.image.present? %>
+              <%= image_tag instrument.image, alt: instrument.name %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 <ul>
   <% @provinces.each do | province |%>
