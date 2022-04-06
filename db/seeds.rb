@@ -15,6 +15,8 @@ Lesson.destroy_all
 Instrument.destroy_all
 Type.destroy_all
 
+User.destroy_all
+
 Tax.destroy_all
 Province.destroy_all
 
@@ -105,6 +107,15 @@ Page.create(
   permalink: "faq"
 )
 
+User.create(
+  first: "Test",
+  last: "User",
+  fullname: "Test User",
+  email: "usertest@gmail.com",
+  password: "password",
+  password_confirmation: "password"
+)
+
 ## Creation Model Table Counter
 puts "Created #{Type.count} Types"
 puts "Created #{Instrument.count} Instruments"
@@ -113,5 +124,7 @@ puts "Created #{Lesson.count} Lessons"
 puts "Created #{Province.count} Provinces"
 puts "Created #{Tax.count} Sales Tax"
 puts "Created #{Page.count} Pages"
+
+puts "Created #{User.count} Users"
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -1,0 +1,50 @@
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
+
+<%= form_with model: @user, url: signup_path, local: true, data: { turbo: false }  do |form| %>  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@user.errors.count, "error") %>.
+      </div>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :first %>
+  <p>
+    <%= form.text_field :first, placeholder: "Dibby" %>
+  </p>
+
+  <%= form.label :last %>
+  <p>
+    <%= form.text_field :last, placeholder: "Note" %>
+  </p>
+
+  <%= form.label :fullname %>
+  <p>
+    <%= form.text_field :fullname, placeholder: "Dibby Note" %>
+  </p>
+
+  <%= form.label :email %>
+  <p>
+    <%= form.text_field :email, placeholder: "dibbynote@gmail.com" %>
+  </p>
+
+  <%= form.label :password %>
+  <p>
+    <%= form.password_field :password, placeholder: "password" %>
+  </p>
+
+  <%= form.label :password_confirmation, "Confirmation" %>
+  <p>
+    <%= form.password_field :password_confirmation, placeholder: "password" %>
+  </p>
+
+  <div>
+    <%= form.submit "Sign Up" %>
+  </div>
+<% end %>
