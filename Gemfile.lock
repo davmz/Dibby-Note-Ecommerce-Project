@@ -301,7 +301,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  devise
+  devise (~> 4.8, >= 4.8.1)
   faker!
   image_processing
   importmap-rails

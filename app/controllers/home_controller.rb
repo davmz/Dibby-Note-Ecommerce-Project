@@ -11,5 +11,7 @@ class HomeController < ApplicationController
     @taxes = Tax.all
 
     @pages = Page.all
+
+    @users = User.all
   end
 end

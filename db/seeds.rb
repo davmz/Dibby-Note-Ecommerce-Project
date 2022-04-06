@@ -16,7 +16,6 @@ Instrument.destroy_all
 Type.destroy_all
 
 User.destroy_all
-
 Tax.destroy_all
 Province.destroy_all
 
@@ -49,9 +48,9 @@ instruments.each do | i |
       next
     end
 
+    ## Insert API Image to Instrument Products
     query = URI.encode_www_form_component(instrument.name)
     downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
-
     instrument.image.attach(io: downloaded_image, filename: "m-#{instrument.name}.jpg")
 
     lesson = instrument.create_lesson(
@@ -107,14 +106,14 @@ Page.create(
   permalink: "faq"
 )
 
-User.create(
-  first: "Test",
-  last: "User",
-  fullname: "Test User",
-  email: "usertest@gmail.com",
-  password: "password",
-  password_confirmation: "password"
-)
+# User.create(
+#   first: "Test",
+#   last: "User",
+#   fullname: "Test User",
+#   email: "usertest@gmail.com",
+#   password: "password",
+#   password_confirmation: "password"
+# )
 
 ## Creation Model Table Counter
 puts "Created #{Type.count} Types"
@@ -124,7 +123,5 @@ puts "Created #{Lesson.count} Lessons"
 puts "Created #{Province.count} Provinces"
 puts "Created #{Tax.count} Sales Tax"
 puts "Created #{Page.count} Pages"
-
-puts "Created #{User.count} Users"
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
