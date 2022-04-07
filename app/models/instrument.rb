@@ -8,4 +8,20 @@ class Instrument < ApplicationRecord
 
   # Active Storage
   has_one_attached :image
+
+  def image_as_thumbnail
+    image.variant(resize_to_limit: [150, nil])
+  end
+
+  def image_pagination_display
+    image.variant(resize_to_limit: [400, nil])
+  end
+
+  def image_detail_display
+    image.variant(resize_to_limit: [600, nil])
+  end
+
+  def image_active_admin_display
+    image.variant(resize_to_limit: [300, nil])
+  end
 end

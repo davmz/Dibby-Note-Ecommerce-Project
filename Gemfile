@@ -79,7 +79,14 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 ## Image Processing
-gem 'image_processing'
+gem 'image_processing', '~> 1.12', '>= 1.12.2'
 
 ## Pagination using Kaminari
 gem 'kaminari'
+
+## Ruby-Vips
+gem 'ruby-vips'
+
+## Vips
+# gem 'vips'
+# gem 'vips-thumbnail'

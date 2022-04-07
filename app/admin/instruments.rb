@@ -6,7 +6,7 @@ ActiveAdmin.register Instrument do
     f.inputs          # builds an input field for every attribute
     f.actions         # adds the 'Submit' and 'Cancel' buttons
     f.inputs do
-      f.input :image, as: :file, hint: f.object.image.present? ? image_tag(f.object.image) : ""
+      f.input :image, as: :file, hint: f.object.image.present? ? image_tag(f.object.image_active_admin_display) : ""
     end
   end
 end

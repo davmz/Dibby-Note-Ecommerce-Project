@@ -1,7 +1,7 @@
 <h1><%= @instrument.name %></h1>
 
 <% if @instrument.image.present? %>
-  <%= image_tag @instrument.image, alt: @instrument.name %>
+  <%= image_tag @instrument.image_detail_display, alt: @instrument.name %>
 <% end %>
 
 <p>

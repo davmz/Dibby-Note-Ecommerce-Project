@@ -51,7 +51,7 @@ instruments.each do | i |
     ## Insert API Image to Instrument Products
     query = URI.encode_www_form_component(instrument.name)
     downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
-    instrument.image.attach(io: downloaded_image, filename: "m-#{instrument.name}.jpg")
+    instrument.image.attach(io: downloaded_image, filename: "m-#{[instrument.name,type.name]}.jpg")
 
     lesson = instrument.create_lesson(
       price: Faker::Number.decimal(l_digits: 1, r_digits: 2)
