@@ -30,8 +30,6 @@
       </p>
 
       <% if instrument.image.present? %>
-        <%# <%= image_tag instrument.image %>
-
         <%= image_tag instrument.image_pagination_display, alt: instrument.name %>
       <% end %>
     </li>

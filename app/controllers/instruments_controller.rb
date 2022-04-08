@@ -23,4 +23,48 @@ class InstrumentsController < ApplicationController
   def show
     @instrument = Instrument.find(params[:id])
   end
+
+  def search
+    # if params.has_key?(:keywords)
+    if !params[:keywords].nil? && !params[:type].nil?
+      wildcard_search = "%#{params[:keywords]}%"
+      type_id = "#{params[:type][:id]}"
+
+      @instrument = Type.find(type_id)
+
+      @instruments = Instrument.where("name LIKE ? AND type_id = ?", wildcard_search, type_id)
+                              .order("price ASC")
+                              .page(params[:page])
+                              .per(6)
+    else
+      @instruments = Instrument.all
+                              .order("price ASC")
+                              .page(params[:page])
+                              .per(6)
+    end
+    # wildcard_search = "%#{params[:keywords]}%"
+    # type_id = "#{params[:type][:id]}"
+    # @type = Type.find(type_id)
+
+    # if params.has_key?(:keywords)
+    #   @instruments = Instrument.all
+    # end
+
+    # if params.has_key?(:type)
+    #   @instruments = Instrument.all
+    #                           .order("price ASC")
+    #                           .page(params[:page])
+    #                           .per(5)
+    # else
+    #   @instruments = Instrument.all
+    #                           .order("price ASC")
+    #                           .page(params[:page])
+    #                           .per(5)
+    # end
+
+    #   @instruments = Instrument.where("name LIKE ? AND type_id = ?", wildcard_search, type_id)
+    #                           .order("price ASC")
+    #                           .page(params[:page])
+    #                           .per(5)
+  end
 end

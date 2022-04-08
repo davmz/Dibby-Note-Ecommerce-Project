@@ -1,0 +1,16 @@
+<h1>Search Results For '<%= params[:keywords] %>':</h1>
+<h1>Type '<%= @instrument.name %>':</h1>
+
+<%= paginate @instruments %>
+
+<ul>
+  <% @instruments.each do | instrument |%>
+    <li>
+      <p>
+        <%= instrument.name %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @instruments %>

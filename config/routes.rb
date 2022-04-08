@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  # get "signup", to: "users#new"
-  # post "signup", to: "users#create"
-  # resources :users, only: [:index, :show]
+  get "search", to: "instruments#search"
 
   resources :pages, except: [:show]
   get "/pages/:permalink" => "pages#permalink", as: "permalink"
