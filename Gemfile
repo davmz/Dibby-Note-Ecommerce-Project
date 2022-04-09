@@ -87,6 +87,9 @@ gem 'kaminari'
 ## Ruby-Vips
 gem 'ruby-vips'
 
+## Figaro => ENV Variables
+gem 'figaro', '~> 1.2'
+
 ## MailJet API
 # gem 'mailjet', '~> 1.6'
 
