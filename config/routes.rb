@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users, only: [:index]
 
-  devise_for :users
+  devise_for :users, controllers: { confirmations: 'users/confirmations' }
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

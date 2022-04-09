@@ -32,7 +32,6 @@ puts "Loading Province the CSV file: #{province_filename}"
 province_csv_data = File.read(province_filename)
 provinces = CSV.parse(province_csv_data, headers:true, encoding: "utf-8")
 
-
 ## Loop through the CSV to populate the Model Tables
 instruments.each do | i |
   type = Type.find_or_create_by(name: i["Instrument_Type"])
