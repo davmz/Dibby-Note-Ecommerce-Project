@@ -87,6 +87,9 @@ gem 'kaminari'
 ## Ruby-Vips
 gem 'ruby-vips'
 
+## MailJet API
+# gem 'mailjet', '~> 1.6'
+
 ## Vips
 # gem 'vips'
 # gem 'vips-thumbnail'

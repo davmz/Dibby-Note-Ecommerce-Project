@@ -9,7 +9,7 @@ require "csv"
 
 ## Destory Model Tables
 AdminUser.destroy_all
-Page.destroy_all
+# Page.destroy_all
 
 Lesson.destroy_all
 Instrument.destroy_all
@@ -49,9 +49,9 @@ instruments.each do | i |
     end
 
     ## Insert API Image to Instrument Products
-    query = URI.encode_www_form_component(instrument.name)
-    downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
-    instrument.image.attach(io: downloaded_image, filename: "m-#{[instrument.name,type.name]}.jpg")
+    # query = URI.encode_www_form_component(instrument.name)
+    # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+    # instrument.image.attach(io: downloaded_image, filename: "m-#{[instrument.name,type.name]}.jpg")
 
     lesson = instrument.create_lesson(
       price: Faker::Number.decimal(l_digits: 1, r_digits: 2)
@@ -88,23 +88,23 @@ provinces.each do | p |
   end
 end
 
-Page.create(
-  title: "About",
-  content: "Made by me, @davmz",
-  permalink: "about"
-)
+# Page.create(
+#   title: "About",
+#   content: "Made by me, @davmz",
+#   permalink: "about"
+# )
 
-Page.create(
-  title: "Contact",
-  content: "Message us for any concerns and acquiries.",
-  permalink: "contact"
-)
+# Page.create(
+#   title: "Contact",
+#   content: "Message us for any concerns and acquiries.",
+#   permalink: "contact"
+# )
 
-Page.create(
-  title: "FAQ",
-  content: "How DibbyNote was made: Ruby on Rails.",
-  permalink: "faq"
-)
+# Page.create(
+#   title: "FAQ",
+#   content: "How DibbyNote was made: Ruby on Rails.",
+#   permalink: "faq"
+# )
 
 # User.create(
 #   first: "Test",
@@ -122,6 +122,6 @@ puts "Created #{Lesson.count} Lessons"
 
 puts "Created #{Province.count} Provinces"
 puts "Created #{Tax.count} Sales Tax"
-puts "Created #{Page.count} Pages"
+# puts "Created #{Page.count} Pages"
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
