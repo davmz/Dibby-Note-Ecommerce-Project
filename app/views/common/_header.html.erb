@@ -20,6 +20,14 @@
         <%= link_to "Sign In", new_user_session_path %>
       </li>
     <% end %>
+
+    <div>
+      <% dibby_pages.each do | page | %>
+        <li>
+          <%= link_to page.title, permalink_path(page.permalink) %>
+        </li>
+      <% end %>
+    </div>
   </ul>
 
   <div class="navbar-end">
@@ -30,7 +38,7 @@
         </div>
 
         <div class="select mr-4">
-          <%= collection_select :type, :id, Type.all.order("id ASC"), :id, :name, {:prompt => true} %>
+          <%= collection_select :type, :id, Type.all.order("id ASC"), :id, :name, { :prompt => true } %>
         </div>
 
         <div class="control">

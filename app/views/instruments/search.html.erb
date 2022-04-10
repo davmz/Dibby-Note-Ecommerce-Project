@@ -1,5 +1,14 @@
-<h1>Search Results For '<%= params[:keywords] %>':</h1>
-<h1>Type '<%= @instrument.name %>':</h1>
+
+
+<% if params[:type][:id] =~ /^[+-]?\d+$/ && (!params[:keywords].blank? && params[:keywords].present?) %>
+  <h1>Search Results for '<%= params[:keywords] %>' type '<%= @instrument.name %>':</h1>
+<% elsif !params[:keywords].blank? && params[:keywords].present? %>
+  <h1>Search Results For Instrument - '<%= params[:keywords] %>':</h1>
+<% elsif params[:type][:id] =~ /^[+-]?\d+$/ %>
+  <h1>Search Results For Type - '<%= @instrument.name %>':</h1>
+<% else %>
+  <h1>All Instruments:</h1>
+<% end %>
 
 <%= paginate @instruments %>
 
@@ -7,7 +16,7 @@
   <% @instruments.each do | instrument |%>
     <li>
       <p>
-        <%= instrument.name %>
+        <%= instrument.name %> - $ <%= instrument.price %>
       </p>
     </li>
   <% end %>
