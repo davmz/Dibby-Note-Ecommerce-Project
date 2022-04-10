@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_07_035841) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_09_225741) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -141,7 +141,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_035841) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.integer "province_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["province_id"], name: "index_users_on_province_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -150,4 +155,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_035841) do
   add_foreign_key "instruments", "types"
   add_foreign_key "lessons", "instruments"
   add_foreign_key "taxes", "provinces"
+  add_foreign_key "users", "provinces"
 end

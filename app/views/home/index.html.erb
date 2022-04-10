@@ -4,16 +4,16 @@
 
 <p>Can't wait for the finished application :) - March 21, 2022</p>
 
-<h2>
-  Users
-</h2>
+<h1>Users</h1>
 
 <ul>
   <% @users.each do | user |%>
     <li>
-      <div>
-        <%= user.email %>
-      </div>
+      <%= user.first_name %>,
+      <%= user.last_name %>,
+      <%= user.address %>,
+      <%= user.email %>,
+      <%= user.province_id %>
     </li>
   <% end %>
 </ul>
