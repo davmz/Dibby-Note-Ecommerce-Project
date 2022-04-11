@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_11_213841) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_11_214200) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -120,6 +120,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_213841) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "cart_id", null: false
+    t.integer "orderstatus_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["orderstatus_id"], name: "index_orders_on_orderstatus_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -186,6 +197,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_213841) do
   add_foreign_key "instrument_carts", "instruments"
   add_foreign_key "instruments", "types"
   add_foreign_key "lessons", "instruments"
+  add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "orderstatuses"
+  add_foreign_key "orders", "users"
   add_foreign_key "taxes", "provinces"
   add_foreign_key "users", "provinces"
 end
