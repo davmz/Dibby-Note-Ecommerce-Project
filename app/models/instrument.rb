@@ -9,6 +9,7 @@ class Instrument < ApplicationRecord
   # Active Storage
   has_one_attached :image
 
+  ## Uploaded Images on resize
   def image_as_thumbnail
     image.variant(resize_to_limit: [150, nil])
   end
