@@ -1,4 +1,6 @@
 class InstrumentsController < ApplicationController
+  add_breadcrumb "Instruments", :instruments_path
+
   def index
     if (params.has_key?(:instrument_filter))
       if (params[:instrument_filter].to_s == "New-Instrument")
@@ -22,6 +24,7 @@ class InstrumentsController < ApplicationController
 
   def show
     @instrument = Instrument.find(params[:id])
+    add_breadcrumb @instrument.name, instrument_path(@instrument.id)
   end
 
   def search

@@ -1,4 +1,6 @@
 class LessonsController < ApplicationController
+  add_breadcrumb "Instrument Lessons", :lessons_path
+
   def index
     if (params.has_key?(:lesson_filter))
       if (params[:lesson_filter].to_s == "New-Lesson")
@@ -22,5 +24,6 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    add_breadcrumb "#{@lesson.instrument.name} Lesson", lesson_path(@lesson.id)
   end
 end

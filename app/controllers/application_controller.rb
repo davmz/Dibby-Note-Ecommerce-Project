@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :dibby_pages
 
+  add_breadcrumb "Home", :root_path
+
   def dibby_pages
     Page.all
   end

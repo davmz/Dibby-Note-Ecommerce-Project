@@ -71,25 +71,31 @@ group :test do
   gem "webdrivers"
 end
 
-# ActiveAdmin Gem
+## ActiveAdmin Gem - https://rubygems.org/gems/activeadmin
 gem 'activeadmin'
+
+## Devise Gem - https://rubygems.org/gems/devise
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
-# Faker Gem
+## Faker Gem - https://rubygems.org/gems/faker
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
-## Image Processing
+## Image Processing - https://rubygems.org/gems/image_processing
 gem 'image_processing', '~> 1.12', '>= 1.12.2'
 
-## Pagination using Kaminari
+## Pagination using Kaminari - https://rubygems.org/gems/kaminari
 gem 'kaminari'
 
-## Ruby-Vips
+## Ruby-Vips - https://rubygems.org/gems/ruby-vips
 gem 'ruby-vips'
 
-## Figaro => ENV Variables
+## Figaro => ENV Variables - https://rubygems.org/gems/figaro
 gem 'figaro', '~> 1.2'
 
+## Breadcrumbs - https://rubygems.org/gems/breadcrumbs_on_rails
+gem 'breadcrumbs_on_rails', '~> 4.1'
+
+### Unused Gems throughout application
 ## MailJet API
 # gem 'mailjet', '~> 1.6'
 
