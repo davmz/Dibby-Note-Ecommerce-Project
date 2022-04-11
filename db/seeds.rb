@@ -1,15 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
 require "csv"
 
 ## Destory Model Tables
 AdminUser.destroy_all
-# Page.destroy_all
 
 Lesson.destroy_all
 Instrument.destroy_all
@@ -18,6 +10,8 @@ Type.destroy_all
 User.destroy_all
 Tax.destroy_all
 Province.destroy_all
+
+OrderStatus.destroy_all
 
 ## Set up CSV file to extract the data
 instrument_filename = Rails.root.join("db/music_data_img.csv")
@@ -31,6 +25,12 @@ puts "Loading Province the CSV file: #{province_filename}"
 
 province_csv_data = File.read(province_filename)
 provinces = CSV.parse(province_csv_data, headers:true, encoding: "utf-8")
+
+orderstatus_filename = Rails.root.join("db/order_status.csv")
+puts "Loading Order Status the CSV file: #{orderstatus_filename}"
+
+orderstatus_csv_data = File.read(orderstatus_filename)
+orderstatus = CSV.parse(orderstatus_csv_data, headers:true, encoding: "utf-8")
 
 ## Loop through the CSV to populate the Model Tables
 instruments.each do | i |
@@ -87,32 +87,16 @@ provinces.each do | p |
   end
 end
 
-# Page.create(
-#   title: "About",
-#   content: "Made by me, @davmz",
-#   permalink: "about"
-# )
+orderstatus.each do | stat |
+  orderstat = OrderStatus.create(
+    status: stat["Status Name"],
+  )
 
-# Page.create(
-#   title: "Contact",
-#   content: "Message us for any concerns and acquiries.",
-#   permalink: "contact"
-# )
-
-# Page.create(
-#   title: "FAQ",
-#   content: "How DibbyNote was made: Ruby on Rails.",
-#   permalink: "faq"
-# )
-
-# User.create(
-#   first: "Test",
-#   last: "User",
-#   fullname: "Test User",
-#   email: "usertest@gmail.com",
-#   password: "password",
-#   password_confirmation: "password"
-# )
+  unless orderstat.valid?
+    puts "Invalid Order #{orderstat.name} Status"
+    next
+  end
+end
 
 ## Creation Model Table Counter
 puts "Created #{Type.count} Types"
@@ -121,6 +105,6 @@ puts "Created #{Lesson.count} Lessons"
 
 puts "Created #{Province.count} Provinces"
 puts "Created #{Tax.count} Sales Tax"
-# puts "Created #{Page.count} Pages"
+puts "Created #{OrderStatus.count} Order Status'"
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
