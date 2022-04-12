@@ -10,6 +10,12 @@
   <h1>All Instruments:</h1>
 <% end %>
 
+<div id="flash_messages">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, :class => "flash #{key}") %>
+  <% end %>
+</div>
+
 <%= paginate @instruments %>
 
 <ul>
@@ -23,3 +29,5 @@
 </ul>
 
 <%= paginate @instruments %>
+
+

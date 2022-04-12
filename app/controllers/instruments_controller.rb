@@ -28,6 +28,8 @@ class InstrumentsController < ApplicationController
   end
 
   def search
+    flash[:search_msg] = "Search through our endless supply of high quality instruments. Search through all instrument or search through all. Enjoy shopping :)"
+
     wildcard_search = "%#{params[:keywords]}%"
     type_id = "#{params[:type][:id]}"
 
@@ -46,6 +48,7 @@ class InstrumentsController < ApplicationController
                         .order("price ASC")
                         .page(params[:page])
                         .per(6)
+
 
     ## KEYWORD EMPTY
     elsif (params[:keywords].blank? && !params[:keywords].present?) && type_id =~ /^[+-]?\d+$/
