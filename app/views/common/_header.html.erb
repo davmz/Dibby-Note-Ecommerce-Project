@@ -3,6 +3,8 @@
 
   <ul>
     <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>
+
       <li>
         <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
       </li>

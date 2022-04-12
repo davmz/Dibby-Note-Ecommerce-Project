@@ -4,6 +4,27 @@
 
 <p>Can't wait for the finished application :) - March 21, 2022</p>
 
+<% if user_signed_in? %>
+  <div>
+    <div>
+      <h1>Welcome, <%= session[:user_name] %></h1>
+    </div>
+
+    <div>
+      <div>
+        <h2>Here at Dibby we are confident in our quality of service and products.</h2>
+      </div>
+
+      <div>
+        <p>
+          Scroll through our endless supply of new instruments ready to be shipped to you. With that you can purchase
+          a lesson for that particular instrument. Have fun and enjoy shopping :) ~ DibbyNote Team
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <h1>Users</h1>
 
 <ul>

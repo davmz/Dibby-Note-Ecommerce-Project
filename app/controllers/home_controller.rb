@@ -13,5 +13,9 @@ class HomeController < ApplicationController
     @pages = Page.all
 
     @users = User.all
+
+    if user_signed_in?
+      session[:user_name] = current_user.first_name
+    end
   end
 end

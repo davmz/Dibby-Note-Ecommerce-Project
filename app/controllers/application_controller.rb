@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  protect_from_forgery
   helper_method :dibby_pages
-
   add_breadcrumb "Home", :root_path
 
   def dibby_pages
