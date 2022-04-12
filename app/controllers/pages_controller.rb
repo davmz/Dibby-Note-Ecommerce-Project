@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  # before_action :set_page, only: %i[permalink]
+  before_action :set_page, only: %i[permalink]
   # http_basic_authenticate_with name: "admin", password: "password"
 
   # GET /pages or /pages.json

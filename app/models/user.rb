@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :province, dependent: :nullify
+  has_one :province, dependent: :destroy
   has_many :order, dependent: :destroy
 
   # Include default devise modules. Others available are:
