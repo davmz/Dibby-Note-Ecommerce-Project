@@ -1,5 +1,5 @@
 class Type < ApplicationRecord
-  has_many :instrument
+  has_many :instrument, dependent: :destroy
 
   # Validation
   validates :name, presence: true, uniqueness: true

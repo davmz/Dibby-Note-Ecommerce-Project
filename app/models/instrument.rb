@@ -1,6 +1,7 @@
 class Instrument < ApplicationRecord
   belongs_to :type
-  has_one :lesson
+
+  has_one :lesson, dependent: :delete
 
   # Validation
   validates :name, :price, presence: true

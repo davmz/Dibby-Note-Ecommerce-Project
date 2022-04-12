@@ -14,8 +14,6 @@ class HomeController < ApplicationController
 
     @users = User.all
 
-    if user_signed_in?
-      session[:user_name] = current_user.first_name
-    end
+    session[:user_name] = current_user.first_name if user_signed_in?
   end
 end

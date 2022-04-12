@@ -95,6 +95,12 @@ gem 'figaro', '~> 1.2'
 ## Breadcrumbs - https://rubygems.org/gems/breadcrumbs_on_rails
 gem 'breadcrumbs_on_rails', '~> 4.1'
 
+## Rubocop - https://rubygems.org/gems/rubocop
+gem 'rubocop', '~> 1.27'
+
+## Rubocop-Rails - https://rubygems.org/gems/rubocop-rails
+gem 'rubocop-rails', '~> 2.14', '>= 2.14.2'
+
 ### Unused Gems throughout application
 ## MailJet API
 # gem 'mailjet', '~> 1.6'

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_one :province
-  has_many :order
+  has_one :province, dependent: :nullify
+  has_many :order, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
