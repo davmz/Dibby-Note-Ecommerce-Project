@@ -5,10 +5,10 @@ class LessonsController < ApplicationController
     if params.key?(:lesson_filter)
       params[:lesson_filter].to_s == "New-Lesson" ? new_create_instrument : new_update_instrument
     else
-      @instruments = Instrument.includes(:type)
-                               .order("price ASC")
-                               .page(params[:page])
-                               .per(5)
+      @lessons = Lesson.includes(:instrument)
+                       .order("price ASC")
+                       .page(params[:page])
+                       .per(5)
     end
   end
 
@@ -20,16 +20,16 @@ class LessonsController < ApplicationController
   private
 
   def new_create_instrument
-    @instruments = Instrument.where("created_at >= ?", Time.zone.now.beginning_of_day)
-                             .order("price ASC")
-                             .page(params[:page])
-                             .per(5)
+    @lessons = Instrument.where("created_at >= ?", Time.zone.now.beginning_of_day)
+                         .order("price ASC")
+                         .page(params[:page])
+                         .per(5)
   end
 
   def new_update_instrument
-    @instruments = Instrument.where("updated_at >= ?", Time.zone.now.beginning_of_day)
-                             .order("price ASC")
-                             .page(params[:page])
-                             .per(5)
+    @lessons = Instrument.where("updated_at >= ?", Time.zone.now.beginning_of_day)
+                         .order("price ASC")
+                         .page(params[:page])
+                         .per(5)
   end
 end

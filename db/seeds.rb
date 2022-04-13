@@ -49,8 +49,10 @@ instruments.each do |i|
   end
 
   ## Add Images saved on file to each specific instrument
-  instrument.image.attach(io: File.open(Rails.root.join("db/#{i["Image_File"]}")), filename: "m-#{[instrument.name,type.name]}.jpg")
-  # instrument.image.attach(io: File.open(Rails.root.join("db/#{i["Image_File"]}")), filename: "m-#{[instrument.name,type.name]}.jpg")
+  instrument.image.attach(io:       File.open(Rails.root.join("db/#{i['Image_File']}")),
+                          filename: "m-#{[instrument.name, type.name]}.jpg")
+  # instrument.image.attach(io: File.open(Rails.root.join("db/#{i["Image_File"]}")),
+  # filename: "m-#{[instrument.name,type.name]}.jpg")
 
   lesson = instrument.create_lesson(
     price: Faker::Number.decimal(l_digits: 1, r_digits: 2)
