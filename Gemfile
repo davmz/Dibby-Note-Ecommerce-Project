@@ -101,9 +101,19 @@ gem 'rubocop', '~> 1.27'
 ## Rubocop-Rails - https://rubygems.org/gems/rubocop-rails
 gem 'rubocop-rails', '~> 2.14', '>= 2.14.2'
 
+## ActiveStorage - https://rubygems.org/gems/activestorage
+gem 'activestorage', '~> 7.0', '>= 7.0.2.3'
+
+## Google-Cloud Storage - https://rubygems.org/gems/google-cloud-storage
+gem 'google-cloud-storage', '~> 1.36', '>= 1.36.1'
+
+## Carrierwave - https://rubygems.org/gems/carrierwave
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
+
 ### Unused Gems throughout application
 ## MailJet API
 # gem 'mailjet', '~> 1.6'
+
 
 ## Vips
 # gem 'vips'
