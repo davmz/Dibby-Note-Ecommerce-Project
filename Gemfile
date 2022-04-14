@@ -110,10 +110,12 @@ gem 'google-cloud-storage', '~> 1.36', '>= 1.36.1'
 ## Carrierwave - https://rubygems.org/gems/carrierwave
 gem 'carrierwave', '~> 2.2', '>= 2.2.2'
 
+## aws-sdk-s3 - https://rubygems.org/gems/aws-sdk-s3
+gem 'aws-sdk-s3', '~> 1.113', require: false
+
 ### Unused Gems throughout application
 ## MailJet API
 # gem 'mailjet', '~> 1.6'
-
 
 ## Vips
 # gem 'vips'
