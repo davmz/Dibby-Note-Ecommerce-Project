@@ -97,6 +97,24 @@ orderstatus.each do |stat|
   end
 end
 
+Page.create(
+  title:     "About",
+  content:   "Rails E-Commerce Project based on a company that sells musical instruments.",
+  permalink: "about"
+)
+
+Page.create(
+  title:     "Contact",
+  content:   "Contact us at custsupp.dibbynote@gmail.com for any questions.",
+  permalink: "contact"
+)
+
+Page.create(
+  title:     "FAQ",
+  content:   "Application was made using Ruby on Rails.",
+  permalink: "faq"
+)
+
 ## Creation Model Table Counter
 Rails.logger.debug "Created #{Type.count} Types"
 Rails.logger.debug "Created #{Instrument.count} Instruments"
