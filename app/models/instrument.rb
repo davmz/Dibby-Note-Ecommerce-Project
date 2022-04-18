@@ -1,6 +1,5 @@
 class Instrument < ApplicationRecord
   # mount_uploader :image, ImageUploader
-
   belongs_to :type
 
   has_one :lesson, dependent: :delete

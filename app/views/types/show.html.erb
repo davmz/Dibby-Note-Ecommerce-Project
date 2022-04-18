@@ -10,6 +10,40 @@
           <strong>Some images may take long to load, feel free to refresh the
           page so it registers the image associated to the instrument.</strong>
         </p>
+      <% elsif @type.name == "Studio" %>
+        <p>
+          The typical recording studio consists of a room called the "studio" or
+          "live room" equipped with microphones and mic stands, where
+          instrumentalists and vocalists perform; and the "control room", where
+          audio engineers, sometimes with record producers, as well, operate
+          professional audio mixing consoles, effects units, or computers with
+          specialized software suites to mix, manipulate (e.g., by adjusting the
+          equalization and adding effects) and route the sound for analog or
+          digital recording. The engineers and producers listen to the live music
+          and the recorded "tracks" on high-quality monitor speakers or
+          headphones.
+        </p>
+      <% elsif @type.name == "String Instrument" %>
+        <p>
+          String instruments, stringed instruments, or chordophones are musical
+          instruments that produce sound from vibrating strings when a performer
+          plays or sounds the strings in some manner. Musicians play some string
+          instruments by plucking the strings with their fingers or a
+          plectrum—and others by hitting the strings with a light wooden hammer
+          or by rubbing the strings with a bow. In some keyboard instruments,
+          such as the harpsichord, the musician presses a key that plucks the
+          string. Other musical instruments generate sound by striking the
+          string.
+        </p>
+      <% elsif @type.name == "Percussion" %>
+        <p>
+          A percussion instrument is a musical instrument that is sounded by
+          being struck or scraped by a beater including attached or enclosed
+          beaters or rattles struck, scraped or rubbed by hand or struck
+          against another similar instrument. Excluding zoomusicological
+          instruments and the human voice, the percussion family is believed
+          to include the oldest musical instruments.
+        </p>
       <% end %>
   </div>
 
