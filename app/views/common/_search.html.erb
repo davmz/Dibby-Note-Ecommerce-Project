@@ -1,0 +1,18 @@
+<%= form_with(url: search_path, method: :get, local: true, class: "px-2 py-4") do  %>
+  <div class="field is-grouped ">
+    <div class="control is-expanded has-icons-right" style="width: 350px">
+      <%= text_field_tag(:keywords, nil, class: "input is-rounded", placeholder: "Search for Instrument") %>
+      <span class="icon is-small is-right mr-3">
+        <img src="https://findicons.com/files/icons/2813/flat_jewels/512/search.png">
+      </span>
+    </div>
+
+    <div class="select mr-4">
+      <%= collection_select :type, :id, Type.all.order("id ASC"), :id, :name, { :prompt => true } %>
+    </div>
+
+    <div class="control">
+      <%= submit_tag("Search", class: "button is-primary") %>
+    </div>
+  </div>
+<% end %>

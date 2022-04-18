@@ -1,4 +1,4 @@
-<nav class="navbar is-black level px-6 py-3" role="navigation" aria-label="main navigation">
+<nav class="navbar is-black  px-6 py-3" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <div class="navbar-item">
       <img src="https://t3.ftcdn.net/jpg/01/95/82/02/360_F_195820215_3qBs8o8cUenR6H9ZWIjnKe60IXSb1xjv.jpg" width="50" height="50">
@@ -33,10 +33,17 @@
     </div>
 
     <div class="navbar-end">
+      <% if user_signed_in? %>
+        <div class="navbar-item">
+          <div>
+            <p>Logged in as <strong class="has-text-link"><%= current_user.email %></strong></p>
+          </div>
+        </div>
+      <% end %>
+
       <div class="navbar-item">
         <div class="buttons">
           <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>
 
             <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "button is-primary is-rounded" %>
 
@@ -50,6 +57,7 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 </nav>
 
   <div class="navbar-end">
@@ -70,3 +78,6 @@
     <% end %>
   </div>
   </div>
+=======
+</nav>
+>>>>>>> styling

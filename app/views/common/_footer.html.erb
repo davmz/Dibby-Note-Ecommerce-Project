@@ -1,35 +1,54 @@
-<footer class="footer">
-  <div>
-    <div>
-      <h1>Products & Services</h1>
-    </div>
-
-    <div>
+<footer class="footer has-background-black has-text-white">
+  <div class="columns mb-6 is-justify-content-center is-align-content-space-between is-full-mobile is-two-thirds-tablet is-one-third-fullhd">
+    <div class="column is-one-fifth">
+      <h5 class="title is-5 has-text-white">Products & Services</h5>
       <ul>
-        <li>Instruments</li>
-        <li>Lessons</li>
+        <li>
+          <%= link_to "Categories", types_path %>
+        </li>
+        <li>
+          <%= link_to "Instruments", instruments_path %>
+        </li>
       </ul>
     </div>
-  </div>
 
-  <div>
-    <h1>DibbyNote</h1>
-  </div>
-
-    <div>
+    <div class="column is-one-fifth">
+      <h5 class="title is-5 has-text-white">DibbyNote</h5>
       <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
-        <li>FAQ</li>
+        <li>
+          <%= link_to "Home", root_path %>
+        </li>
+        <% dibby_pages.each do | page | %>
+          <li>
+            <%= link_to page.title, permalink_path(page.permalink) %>
+          </li>
+        <% end %>
       </ul>
     </div>
-  </div>
 
-  <div>
-    <p>
-      Email us at <a>custsupp.dibbynote@gmail.com</a>
-    </p>
+    <div class="column is-one-fifth">
+      <h5 class="title is-5 has-text-white">Account</h5>
+      <ul>
+        <% if user_signed_in? %>
+          <li>
+            Cart
+          </li>
+          <li>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+          </li>
+          <li>
+            <%= link_to "Edit Account", edit_user_registration_path %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Sign Up", new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "Sign In", new_user_session_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <div class="content has-text-centered">

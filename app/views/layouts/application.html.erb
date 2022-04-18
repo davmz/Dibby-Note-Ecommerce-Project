@@ -9,21 +9,23 @@
     <!-- BULMA CSS - https://bulma.io/documentation/overview/start/ -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <!-- <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> -->
     <%= javascript_importmap_tags %>
+
+    <!-- Can't wait for the finished application :) - March 21, 2022 -->
   </head>
 
   <body>
-    <div class="container">
-      <%= render partial: "common/header" %>
+    <%= render partial: "common/header" %>
 
+    <div class="container px-6 pb-6 has-background-light is-widescreen is-fullhd">
+      <%= render partial: "common/search" %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-
       <%= render partial: "common/breadcrumb" %>
       <%= yield %>
-
-      <%= render partial: "common/footer" %>
     </div>
+
+    <%= render partial: "common/footer" %>
   </body>
 </html>
