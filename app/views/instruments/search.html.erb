@@ -14,7 +14,7 @@
   <% end %>
 </div>
 
-<% if @instruments.nil? %>
+<% if @instruments.any? %>
   <%= paginate @instruments %>
 
   <ul>

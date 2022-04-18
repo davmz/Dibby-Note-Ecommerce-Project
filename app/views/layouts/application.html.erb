@@ -20,9 +20,9 @@
 
     <div class="container px-6 pb-6 has-background-light is-widescreen is-fullhd">
       <%= render partial: "common/search" %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= render partial: "common/breadcrumb" %>
+      <p class="is-family-monospace"><%= render partial: "common/breadcrumb" %></p>
+      <p class="message is-warning px-4"><%= notice %></p>
+      <p class="message is-danger px-4"><%= alert %></p>
       <%= yield %>
     </div>
 
