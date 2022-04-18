@@ -1,15 +1,17 @@
-<h2>Resend confirmation instructions</h2>
+<h2 class="title is-2">Resend confirmation instructions</h2>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }, local: true, data: { turbo: false }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  <div class="field mb-6">
+    <%= f.label :email, class: "label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "input" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+    <%= f.submit "Resend confirmation instructions", class: "button is-info" %>
+
+    <%= link_to "Log in", new_session_path(resource_name), class: "button is-primary mb-2" %><br />
   </div>
 <% end %>
 

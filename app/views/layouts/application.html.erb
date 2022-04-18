@@ -18,8 +18,11 @@
   <body>
     <%= render partial: "common/header" %>
 
-    <div class="container px-6 pb-6 has-background-light is-widescreen is-fullhd">
-      <%= render partial: "common/search" %>
+    <div class="container pt-5 px-6 pb-6 has-background-light is-widescreen is-fullhd">
+      <% if controller_name != "sessions" && controller_name != "registrations" && controller_name != "confirmations" && controller_name != "passwords" && controller_name != "unlocks" %>
+        <%= render partial: "common/search" %>
+      <% end %>
+
       <p class="is-family-monospace"><%= render partial: "common/breadcrumb" %></p>
       <p class="message is-warning px-4"><%= notice %></p>
       <p class="message is-danger px-4"><%= alert %></p>
