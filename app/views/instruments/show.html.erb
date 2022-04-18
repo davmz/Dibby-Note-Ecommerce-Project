@@ -1,16 +1,48 @@
-<h1><%= @instrument.name %></h1>
+<div class="container px-5 py-6 has-background-white-bis">
+  <h1 class="title is-1"><%= @instrument.name %></h1>
 
-<% if @instrument.image.present? %>
-  <%= image_tag @instrument.image_detail_display, alt: @instrument.name %>
-<% end %>
+  <div class="columns has-background-white px-3 py-4">
+    <div class="column">
+      <% if @instrument.image.present? %>
+        <%= image_tag @instrument.image_detail_display, alt: @instrument.name %>
+      <% end %>
+    </div>
 
-<p>
-  <%= @instrument.price %>
-</p>
+    <div class="column is-two-fifths">
+      <div class="mt-6">
+        DibbyNote is proud to present <i><%= @instrument.name %></i> as a finest
+        product of our <%= @instrument.type.name %> instrument. Made by the best
+        manufacturers of the world, <b>Dibby Industries Inc.</b>, we are proud
+        to maintain high quality products just for you. Purchase yours now today
+        and be delivered right at your door steps in just 2 weeks.
+      </div>
 
-<p>
-  <%= link_to @instrument.type.name, type_path(@instrument.type_id) %>
-</p>
+        <p class="is-size-3 my-5">
+          <b><sup>$</sup><%= @instrument.price %></b>
+        </p>
 
-<%= link_to "Home", root_path%>
-<%= link_to "Instruments", instruments_path %>
+        <p>
+          Instrument Family:
+          <i>
+          <%= link_to @instrument.type.name, type_path(@instrument.type_id) %>
+          </i>
+        </p>
+
+        <% if user_signed_in? %>
+          <p>
+            Deliver to <%= current_user.first_name %> - <%= current_user.address %>
+          </p>
+        <% end %>
+
+        <p><b>In Stock</b></p>
+
+        <% if user_signed_in? %>
+          <button>Add to Cart</button>
+          <button>Buy Now</button>
+        <% end %>
+
+        <p>Secure Transaction</p>
+        <p>Ships from Canada and sold by <%= link_to "DibbyNote", root_path %></p>
+    </div>
+  </div>
+</div>

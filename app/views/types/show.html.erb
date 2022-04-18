@@ -1,12 +1,49 @@
-<h1><%= @type.name %></h1>
+<div class="container px-5 py-6 has-background-white-bis">
+  <div class="content is-medium mb-6">
+    <h1 class="title is-1"><%= @type.name %></h1>
+      <% if @type.name == "Keyboard" %>
+        <p>
+          A percussion instrument is probably best defined as one where a
+          resonating surface is struck by the player, either by hand or by some
+          form of stick. These divide roughly into tuned instruments which have
+          a definite pitch or series of pitches, and those of indefinite pitch.
+          <strong>Some images may take long to load, feel free to refresh the
+          page so it registers the image associated to the instrument.</strong>
+        </p>
+      <% end %>
+  </div>
 
-<ul>
-  <% @type.instrument.each do | instrument | %>
-    <li>
-      <%= link_to instrument.name, instrument_path(instrument.id) %>
-    </li>
-  <% end %>
-</ul>
+  <table class="table is-striped is-fullwidth is-hoverable mt-6">
+    <thead>
+      <tr class="is-size-5">
+        <th>Keyboard Instrument</th>
+        <th>Image</th>
+        <th>Price (CAD)</th>
+      </tr>
+    </thead>
 
-<%= link_to "Types", types_path %>
-<%= link_to "Home", root_path %>
+    <tbody>
+        <% @type.instrument.each do | instrument |%>
+          <tr>
+            <td class="is-size-5">
+              <%= link_to instrument.name, instrument_path(instrument.id) %>
+            </td>
+
+            <td>
+              <% if instrument.image.present? %>
+                <%= image_tag instrument.image_pagination_display, alt: "#{instrument.name} #{instrument.type.name}" %>
+              <% else %>
+                <strong>
+                  No Associated Image for this instrument
+                </strong>
+              <% end %>
+            </td>
+
+            <td>
+              $<%= instrument.price %>
+            </td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

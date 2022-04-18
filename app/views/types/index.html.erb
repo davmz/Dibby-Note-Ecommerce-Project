@@ -1,11 +1,28 @@
-<h1>DibbyNote Store</h1>
+<div class="container px-5 py-6 has-background-white-bis">
+  <div class="content is-medium mb-6">
+    <h1>Instrument Types</h1>
+    <p class="pr-6">
+      At DibbyNote we categorize our instruments into their respective families, making it easier for you to find the right type of instrument.
+      Have a look and see through all of the instrument types and find the instrument you are looking for. <strong>We do not have all of the instruments
+      in the world, but we assure you we have other popular instruments here at DibbyNote.</strong>
+    </p>
+  </div>
 
-<ul>
-  <% @types.each do | type |%>
-    <li>
-      <%= link_to type.name, type %>
-    </li>
-  <% end %>
-</ul>
+  <table class="table is-striped is-fullwidth is-hoverable mt-6">
+    <thead>
+      <tr class="is-size-5">
+        <th>Instrument Family</th>
+        <th>Instruments on Store</th>
+      </tr>
+    </thead>
 
-<%= link_to "Home", root_path %>
+    <tbody>
+        <% @types.each do | type |%>
+          <tr>
+            <td class="is-size-5"><%= link_to type.name, type %></td>
+            <td class="is-size-5"><%= type.instrument.count %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

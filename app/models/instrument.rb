@@ -18,7 +18,7 @@ class Instrument < ApplicationRecord
   end
 
   def image_pagination_display
-    image.variant(resize_to_fit: [500, nil])
+    image.variant(resize_to_fit: [320, nil])
   end
 
   def image_detail_display
