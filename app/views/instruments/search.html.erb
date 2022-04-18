@@ -1,5 +1,3 @@
-
-
 <% if params[:type][:id] =~ /^[+-]?\d+$/ && (!params[:keywords].blank? && params[:keywords].present?) %>
   <h1>Search Results for '<%= params[:keywords] %>' type '<%= @instrument.name %>':</h1>
 <% elsif !params[:keywords].blank? && params[:keywords].present? %>
@@ -16,18 +14,22 @@
   <% end %>
 </div>
 
-<%= paginate @instruments %>
+<% if @instruments.nil? %>
+  <%= paginate @instruments %>
 
-<ul>
-  <% @instruments.each do | instrument |%>
-    <li>
-      <p>
-        <%= instrument.name %> - $ <%= instrument.price %>
-      </p>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @instruments.each do | instrument |%>
+      <li>
+        <p>
+          <%= instrument.name %> - $ <%= instrument.price %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
 
-<%= paginate @instruments %>
-
+  <%= paginate @instruments %>
+<% else %>
+  <p>Sorry, no instruments were found with the name: "<%= params[:keywords] %>"</p>
+  <p>Please search again using a different keyword or wait for any stocks of that particular instrument.</p>
+<% end %>
 

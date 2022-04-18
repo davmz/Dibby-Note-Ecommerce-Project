@@ -1,5 +1,6 @@
 class InstrumentsController < ApplicationController
   add_breadcrumb "Instruments", :instruments_path
+  before_action :fetch_search_instruments, only: [:search]
 
   def index
     if params.key?(:instrument_filter)
@@ -18,14 +19,22 @@ class InstrumentsController < ApplicationController
   end
 
   def search
-    if params[:keywords].present? || params[:type][:id] =~ /^[+-]?\d+$/
-      search_param_instrument
-    elsif params[:keywords].blank? && params[:type][:id] !~ /^[+-]?\d+$/
-      search_noparam_instrument
-    end
+    ## Both Empty
+    search_noparam_instrument if params[:keywords].blank? && params[:type][:id] !~ /^[+-]?\d+$/
+
+    ## Only Instrument
+    search_instrument_instrument if params[:keywords].present? && params[:type][:id] !~ /^[+-]?\d+$/
   end
 
   private
+
+  def fetch_search_instruments
+    ## Has Both
+    search_bothparam_instrument if params[:keywords].present? && params[:type][:id] =~ /^[+-]?\d+$/
+
+    ## Only Type
+    search_type_instrument if params[:keywords].blank? && params[:type][:id] =~ /^[+-]?\d+$/
+  end
 
   def new_create_instrument
     search_flash_msg
@@ -43,12 +52,31 @@ class InstrumentsController < ApplicationController
                              .per(5)
   end
 
-  def search_param_instrument
+  def search_bothparam_instrument
+    wildcard_search = "%#{params[:keywords]}%"
     search_flash_msg
     @instrument = Type.find(params[:type][:id])
 
-    @instruments = Instrument.where("name LIKE %#{params[:keywords]}%
-                                    AND type_id = #{params[:type][:id]}")
+    @instruments = Instrument.where("name LIKE ? AND type_id = ?", wildcard_search, params[:type][:id])
+                             .order("price ASC")
+                             .page(params[:page])
+                             .per(4)
+  end
+
+  def search_type_instrument
+    search_flash_msg
+    @instrument = Type.find(params[:type][:id])
+
+    @instruments = Instrument.where("type_id = #{params[:type][:id]}")
+                             .order("price ASC")
+                             .page(params[:page])
+                             .per(4)
+  end
+
+  def search_instrument_instrument
+    wildcard_search = "%#{params[:keywords]}%"
+    search_flash_msg
+    @instruments = Instrument.where("name LIKE ?", wildcard_search)
                              .order("price ASC")
                              .page(params[:page])
                              .per(4)
