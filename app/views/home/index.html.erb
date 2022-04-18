@@ -1,9 +1,3 @@
-<h1>Dibby</h1>
-<p>Musical Online Shop Home Page</p>
-
-
-<p>Can't wait for the finished application :) - March 21, 2022</p>
-
 <% if user_signed_in? %>
   <div>
     <div>
@@ -24,20 +18,6 @@
     </div>
   </div>
 <% end %>
-
-<h1>Users</h1>
-
-<ul>
-  <% @users.each do | user |%>
-    <li>
-      <%= user.first_name %>,
-      <%= user.last_name %>,
-      <%= user.address %>,
-      <%= user.email %>,
-      <%= user.province_id %>
-    </li>
-  <% end %>
-</ul>
 
 <div>
     <h2>
@@ -100,27 +80,3 @@
     </ul>
   </div>
 </div>
-
-<ul>
-  <% @provinces.each do | province |%>
-    <li>
-      <%= province.name %>
-    </li>
-  <% end %>
-</ul>
-
-<ul>
-  <% @taxes.each do | tax |%>
-    <li>
-      <%= tax.totaltax %>
-    </li>
-  <% end %>
-</ul>
-
-<ul>
-  <% @pages.each do | page |%>
-    <li>
-      <%= page.title %>
-    </li>
-  <% end %>
-</ul>
