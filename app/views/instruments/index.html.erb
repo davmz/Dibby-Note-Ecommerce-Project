@@ -1,37 +1,76 @@
-<h1>DibbyNote Store</h1>
+<div class="container px-5 py-6 has-background-white-bis">
+  <div class="content is-medium mb-6">
+  <h1 class="title is-1">Instruments</h1>
 
-<nav>
-  <p>Filter Instrument</p>
+    <p>
+      DibbyNote is one of the biggest and best musical instrument retail
+      stores in the world; providing sales, service, and lessons for
+      all types of musical instruments in a one-of-a-kind, world class facility.
+      Find amazing deals on cool music instruments and accessories.
+    </p>
 
-  <ul>
-    <li>
-      <%= link_to "All", instruments_path, class: "button" %>
-    </li>
+    <div class="columns">
+      <div class="column">
+        <b>BEST PRICE</b><br>GUARANTEE
+      </div>
 
-    <li>
-      <%= link_to "Last Updated", instruments_path(instrument_filter: "Last-Updated"), class: "button" %>
-    </li>
+      <div class="column">
+          <b>FREE SHIPPING</b><br>OVER $99
+      </div>
 
-    <li>
-      <%= link_to "New", instruments_path(instrument_filter: "New-Instrument"), class: "button" %>
-    </li>
-  </ul>
-</nav>
+      <div class="column">
+        <b>30 DAY RETURNS</b><br>AND EXCHANGES
+      </div>
+    </div>
+  </div>
 
-<%= paginate @instruments %>
+  <div class="has-background-light py-5 mb-6">
+    <h4 class="title is-4 has-text-centered">Filter Instruments:</h4>
+    <div class="buttons is-centered">
+      <%= link_to "All", instruments_path, class: "button is-rounded is-success" %>
+      <%= link_to "Last Updated", instruments_path(instrument_filter: "Last-Updated"), class: "button is-rounded is-link" %>
+      <%= link_to "New Instrument", instruments_path(instrument_filter: "New-Instrument"), class: "button is-rounded is-info" %>
+    </div>
+  </div>
 
-<ul>
-  <% @instruments.each do | instrument |%>
-    <li>
-      <p>
-        <%= link_to instrument.name, instrument %>
-      </p>
+  <% if @instruments.any? %>
+    <div>
+      <%= paginate @instruments %>
 
-      <% if instrument.image.present? %>
-        <%= image_tag instrument.image_pagination_display, alt: instrument.name %>
-      <% end %>
-    </li>
+      <table class="table is-striped is-fullwidth is-hoverable mt-6">
+        <thead>
+          <tr class="is-size-5">
+            <th>Instrument Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Family</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @instruments.each do | instrument |%>
+            <tr class="is-size-5">
+              <td><%= link_to instrument.name, instrument %></td>
+              <td><%= instrument.price %></td>
+              <td><%= instrument.type.name %></td>
+              <td>
+                <% if instrument.image.present? %>
+                  <%= image_tag instrument.image_pagination_display, alt: instrument.name %>
+                <% else %>
+                  No Image Associated to this instrument
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @instruments %>
+    </div>
+  <% else %>
+    <% if params[:instrument_filter].to_s == "New-Instrument" %>
+      <h3 class="title is-3 has-text-centered">No instruments have been recently added</h3>
+    <% else %>
+      <h3 class="title is-3 has-text-centered">No instruments have been recently updated</h3>
+    <% end %>
   <% end %>
-</ul>
-
-<%= paginate @instruments %>
+</div>
