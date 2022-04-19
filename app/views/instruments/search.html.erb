@@ -1,35 +1,70 @@
-<% if params[:type][:id] =~ /^[+-]?\d+$/ && (!params[:keywords].blank? && params[:keywords].present?) %>
-  <h1>Search Results for '<%= params[:keywords] %>' type '<%= @instrument.name %>':</h1>
-<% elsif !params[:keywords].blank? && params[:keywords].present? %>
-  <h1>Search Results For Instrument - '<%= params[:keywords] %>':</h1>
-<% elsif params[:type][:id] =~ /^[+-]?\d+$/ %>
-  <h1>Search Results For Type - '<%= @instrument.name %>':</h1>
-<% else %>
-  <h1>All Instruments:</h1>
-<% end %>
-
-<div id="flash_messages">
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, :class => "flash #{key}") %>
-  <% end %>
-</div>
-
-<% if @instruments.any? %>
-  <%= paginate @instruments %>
-
-  <ul>
-    <% @instruments.each do | instrument |%>
-      <li>
-        <p>
-          <%= instrument.name %> - $ <%= instrument.price %>
-        </p>
-      </li>
+<div class="container px-5 py-6 has-background-white-bis">
+  <div class="content is-medium mb-6">
+    <% if params[:type][:id] =~ /^[+-]?\d+$/ && (!params[:keywords].blank? && params[:keywords].present?) %>
+      <h1 class="title is-1">Search Results for '<i><%= params[:keywords] %></i>' Type '<i><%= @instrument.name %></i>':</h1>
+    <% elsif !params[:keywords].blank? && params[:keywords].present? %>
+      <h1 class="title is-1">Search Results For Instrument - '<i><%= params[:keywords] %></i>':</h1>
+    <% elsif params[:type][:id] =~ /^[+-]?\d+$/ %>
+      <h1 class="title is-1">Search Results For Type - '<i><%= @instrument.name %></i>':</h1>
+    <% else %>
+      <h1 class="title is-1">All Instruments:</h1>
     <% end %>
-  </ul>
 
-  <%= paginate @instruments %>
-<% else %>
-  <p>Sorry, no instruments were found with the name: "<%= params[:keywords] %>"</p>
-  <p>Please search again using a different keyword or wait for any stocks of that particular instrument.</p>
-<% end %>
+    <div id="flash_messages" class="mb-4">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, :class => "flash #{key}") %>
+      <% end %>
+      <br><p>
+        DibbyNote is one of the biggest and best musical instrument retail
+        stores in the world; providing sales, service, and lessons for all types
+        of musical instruments in a one-of-a-kind, world class facility. Find
+        amazing deals on cool music instruments and accessories.
+      </p>
+    </div>
 
+    <% if @instruments.any? %>
+      <%= paginate @instruments %>
+
+      <table class="table is-striped is-fullwidth is-hoverable mt-2">
+        <thead>
+          <tr class="is-size-5">
+            <th>Instrument Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Family</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @instruments.each do | instrument |%>
+            <tr class="is-size-5">
+              <td><%= link_to instrument.name, instrument %></td>
+              <td><%= instrument.price %></td>
+              <td><%= instrument.type.name %></td>
+              <td>
+                <% if instrument.image.present? %>
+                  <%= image_tag instrument.image_pagination_display, alt: instrument.name %>
+                <% else %>
+                  No Image Associated to this instrument
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @instruments %>
+    <% else %>
+      <div class="content mt-6">
+      <h4 class="title is-4">
+        Sorry, no instruments were found with the name: "<%= params[:keywords]
+        %>"
+      </h4>
+      <h4 class="title is-4">
+        Please search again using a different keyword or wait for any stocks of
+        that particular instrument.
+      </h4>
+      </div>
+    <% end %>
+  </div>
+</div>
