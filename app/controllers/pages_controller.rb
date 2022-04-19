@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: %i[ show edit update destroy ]
+  before_action :set_page, only: %i[show edit update destroy]
   add_breadcrumb "Pages", :pages_path
 
   # http_basic_authenticate_with name: "admin", password: "password"
@@ -8,6 +8,14 @@ class PagesController < ApplicationController
   def index
     @pages = Page.all
   end
+
+  def show; end
+
+  def edit; end
+
+  def update; end
+
+  def destroy; end
 
   # GET /pages/1 or /pages/1.json
   def permalink

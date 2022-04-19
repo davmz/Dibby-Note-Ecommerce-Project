@@ -13,18 +13,18 @@ class Instrument < ApplicationRecord
 
   ## Uploaded Images on resize
   def image_as_thumbnail
-    image.variant(resize_to_fit: [150, nil])
+    image.variant(resize_to_fit: [150, nil]).processed
   end
 
   def image_pagination_display
-    image.variant(resize_to_fit: [320, nil])
+    image.variant(resize_to_fit: [320, nil]).processed
   end
 
   def image_detail_display
-    image.variant(resize_to_fit: [600, nil])
+    image.variant(resize_to_fit: [600, nil]).processed
   end
 
   def image_active_admin_display
-    image.variant(resize_to_fit: [300, nil])
+    image.variant(resize_to_fit: [300, nil]).processed
   end
 end
