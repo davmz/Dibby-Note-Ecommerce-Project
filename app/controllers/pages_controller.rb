@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: %i[permalink]
+  before_action :set_page, only: %i[ show edit update destroy ]
+  add_breadcrumb "Pages", :pages_path
+
   # http_basic_authenticate_with name: "admin", password: "password"
 
   # GET /pages or /pages.json
@@ -7,20 +9,11 @@ class PagesController < ApplicationController
     @pages = Page.all
   end
 
-  def about
-    @page = Page.find_by(permalink: "about")
-  end
-
-  def contact
-    @page = Page.find_by(permalink: "contact")
-  end
-
-  def faq
-    @page = Page.find_by(permalink: "faq")
-  end
-
+  # GET /pages/1 or /pages/1.json
   def permalink
     @page = Page.find_by(permalink: params[:permalink])
+
+    add_breadcrumb @page.title, permalink: params[:permalink]
   end
 
   private

@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   resources :pages, except: [:show]
   get "/pages/:permalink" => "pages#permalink", as: "permalink"
-  get "about" => "pages#about", as: "about"
-  get "contact" => "pages#contact", as: "contact"
-  get "faq" => "pages#faq", as: "faq"
+  # get "about" => "pages#about", as: "about"
+  # get "contact" => "pages#contact", as: "contact"
+  # get "faq" => "pages#faq", as: "faq"
 
   resources :instruments, only: [:index, :show]
   resources :types, only: [:index, :show]

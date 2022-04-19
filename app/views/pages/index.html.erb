@@ -1,14 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Pages</h1>
+<div class="container px-5 py-6 has-background-white-ter">
+  <div class="content is-medium mb-6">
+    <h1 class="title is-1">Pages</h1>
 
-<div id="pages">
-  <% @pages.each do |page| %>
-    <%= render page %>
-    <p>
-      <%= link_to "Show this page", permalink_path(page.permalink) %>
-    </p>
-  <% end %>
-
-  <%= link_to "Home", root_path %>
+    <div id="pages">
+      <% @pages.each do |page| %>
+        <%= render page %>
+        <p>
+          <%= link_to "Show this page", permalink_path(page.permalink) %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>

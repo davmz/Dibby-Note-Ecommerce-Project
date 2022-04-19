@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>DibbyNote</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,8 +9,7 @@
     <!-- BULMA CSS - https://bulma.io/documentation/overview/start/ -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
-    <!-- <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> -->
-    <%= javascript_importmap_tags %>
+    <!-- <%= javascript_importmap_tags %> -->
 
     <!-- Can't wait for the finished application :) - March 21, 2022 -->
   </head>
@@ -19,7 +18,7 @@
     <%= render partial: "common/header" %>
 
     <div class="container pt-5 px-6 pb-6 has-background-light is-widescreen is-fullhd">
-      <% if controller_name != "sessions" && controller_name != "registrations" && controller_name != "confirmations" && controller_name != "passwords" && controller_name != "unlocks" %>
+      <% if controller_name != "sessions" && controller_name != "registrations" && controller_name != "confirmations" && controller_name != "passwords" && controller_name != "unlocks" && controller_name != "pages" %>
         <%= render partial: "common/search" %>
       <% end %>
 
