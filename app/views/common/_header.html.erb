@@ -39,6 +39,20 @@
             <p>Logged in as <strong class="has-text-link"><%= current_user.email %></strong></p>
           </div>
         </div>
+
+        <div class="navbar-item">
+          <%= link_to "Cart", carts_path, class: "button" %>
+
+          <div class="button">
+            <p>
+              Cart
+
+              <% if @cart.present? %>
+                <sup><%= @cart.size %></sup>
+              <% end %>
+            </p>
+          </div>
+        </div>
       <% end %>
 
       <div class="navbar-item">

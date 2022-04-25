@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :initialize_session
+  before_action :load_cart
+
   protect_from_forgery
   helper_method :dibby_pages
-  helper_method :cart
+  # helper_method :cart
   add_breadcrumb "Home", :root_path
 
   protected
@@ -12,13 +14,17 @@ class ApplicationController < ActionController::Base
     Page.all
   end
 
-  def initialize_session
-    session[:shopping_cart] ||= []
+  def load_cart
+    @cart = Instrument.find(session[:cart])
   end
 
-  def cart
-    Instrument.find(session[:shopping_cart])
+  def initialize_session
+    session[:cart] ||= []
   end
+
+  # def cart
+  #   Instrument.find(session[:cart])
+  # end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,

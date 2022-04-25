@@ -37,8 +37,15 @@
         <p><b>In Stock</b></p>
 
         <% if user_signed_in? %>
-          <button>Add to Cart</button>
-          <button>Buy Now</button>
+          <% if user_signed_in? %>
+            <% if @cart.include?(@instrument) %>
+              <%= button_to "Remove from Cart", remove_from_cart_path(@instrument), method: :delete %>
+            <% else %>
+              <%= button_to "Add to Cart", add_to_cart_path(@instrument) %>
+            <% end %>
+          <% else %>
+            <%= link_to "Sign In to Purchase", new_user_session_path, class: "button is-link is-rounded" %>
+          <% end %>
         <% end %>
 
         <p>Secure Transaction</p>

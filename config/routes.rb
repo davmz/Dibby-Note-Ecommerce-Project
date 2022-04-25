@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  post "instruments/add_to_cart/:id", to: "instruments#add_to_cart", as: "add_to_cart"
+  delete "instruments/remove_from_cart/:id", to: "instruments#remove_from_cart", as: "remove_from_cart"
+  resources :carts, only: [:index]
+
   get "search", to: "instruments#search"
 
   resources :pages, except: [:show]

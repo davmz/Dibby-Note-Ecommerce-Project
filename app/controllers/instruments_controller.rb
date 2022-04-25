@@ -2,6 +2,18 @@ class InstrumentsController < ApplicationController
   add_breadcrumb "Instruments", :instruments_path
   before_action :fetch_search_instruments, only: [:search]
 
+  def add_to_cart
+    id = params[:id].to_i
+    session[:cart] << id unless session[:cart].include?(id)
+    redirect_to instruments_path
+  end
+
+  def remove_from_cart
+    id = params[:id].to_i
+    session[:cart].delete(id)
+    redirect_to instruments_path
+  end
+
   def index
     if params.key?(:instrument_filter)
       params[:instrument_filter].to_s == "New-Instrument" ? new_create_instrument : new_update_instrument

@@ -1,0 +1,14 @@
+<h1>User's Cart</h1>
+
+<p>Here is your current cart...</p>
+
+<ul>
+  <% @cart.each do | item | %>
+    <li>
+      <%= item.name %>
+    </li>
+  <% end %>
+</ul>
+
+<button>Pay</button>
+<button>Keep Searching</button>
