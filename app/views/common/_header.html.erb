@@ -38,6 +38,15 @@
           <div>
             <p>Logged in as <strong class="has-text-link"><%= current_user.email %></strong></p>
           </div>
+
+          <div class="navbar-item">
+            <p>
+              Cart
+              <% if cart.present? %>
+                <sup><%= cart.size %></sup>
+              <% end %>
+            </p>
+          </div>
         </div>
       <% end %>
 

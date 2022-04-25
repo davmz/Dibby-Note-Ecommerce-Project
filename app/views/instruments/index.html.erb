@@ -44,6 +44,7 @@
             <th>Price</th>
             <th>Family</th>
             <th>Image</th>
+            <th>Shop</th>
           </tr>
         </thead>
 
@@ -58,6 +59,22 @@
                   <%= image_tag instrument.image_pagination_display, alt: instrument.name %>
                 <% else %>
                   No Image Associated to this instrument
+                <% end %>
+              </td>
+              <td>
+                <% if user_signed_in? %>
+                  <% if cart.include? (instrument) %>
+                    <%= button_to cart_path(instrument), method: :delete do %>
+                      Remove from cart
+                    <% end %>
+                  <% else %>
+                    <%= form_with url: cart_index_path, method: :post do %>
+                      <%= hidden_field_tag(:id, instrument.id) %>
+                      <%= button_tag 'Add to Cart'%>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <%= link_to "Sign In to Purchase", new_user_session_path %>
                 <% end %>
               </td>
             </tr>

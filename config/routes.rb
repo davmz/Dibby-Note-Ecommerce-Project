@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  resources :cart, only: [:create, :destroy]
+
   get "search", to: "instruments#search"
 
   resources :pages, except: [:show]
