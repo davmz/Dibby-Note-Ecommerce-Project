@@ -1,14 +1,49 @@
-<h1>User's Cart</h1>
 
-<p>Here is your current cart...</p>
 
-<ul>
-  <% @cart.each do | item | %>
-    <li>
-      <%= item.name %> <%= item.price %>
-    </li>
-  <% end %>
-</ul>
+<div>
+  <div>
+    <h1 class="title is-1">Shopping Cart</h1>
+    <p>Here is your current shopping cart at DibbyNote</p>
+  </div>
 
-<button>Pay</button>
-<%= link_to "Keep Searching", instruments_path %>
+  <div class="columns mt-5">
+    <div class="column is-three-fifths">
+      <table>
+        <thead>
+          <tr>
+            <th>Instrument Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart.each do | item | %>
+            <tr>
+              <td><%= item.name %></td>
+              <td><%= item.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="column">
+      <div>
+        <div>
+          <h1>Subtotal (<%= @cart.size %>):</h1>
+
+          <p>Total Price Calculation</p>
+        </div>
+
+        <div>
+          <button>Pay</button>
+          <%= link_to "Keep Searching", instruments_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

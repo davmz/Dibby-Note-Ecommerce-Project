@@ -41,17 +41,7 @@
         </div>
 
         <div class="navbar-item">
-          <%= link_to "Cart", carts_path, class: "button" %>
-
-          <div class="button">
-            <p>
-              Cart
-
-              <% if @cart.present? %>
-                <sup><%= @cart.size %></sup>
-              <% end %>
-            </p>
-          </div>
+          <%= link_to "Shopping Cart", carts_path, class: "button is-info is-rounded" %>
         </div>
       <% end %>
 
