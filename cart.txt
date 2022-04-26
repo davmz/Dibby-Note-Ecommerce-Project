@@ -1,0 +1,69 @@
+### cart model
+  class Cart < ApplicationRecord
+    belongs_to :user
+    belongs_to :instrumentcart
+    belongs_to :lesson
+
+    has_one :user, dependent: :delete
+    has_many :lesson, dependent: :nullify
+    has_many :instrumentcart, dependent:
+                                        :destroy
+
+    # Validation
+    validates :totalprice, :taxprice, presence: true, numericality: { only_integer: true }
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.decimal "totalprice"
+    t.decimal "taxprice"
+    t.integer "user_id", null: false
+    t.integer "instrumentcart_id", null: false
+    t.integer "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instrumentcart_id"], name: "index_carts_on_instrumentcart_id"
+    t.index ["lesson_id"], name: "index_carts_on_lesson_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+### instrument_cart model
+  class InstrumentCart < ApplicationRecord
+    belongs_to :instrument
+
+    has_one :instrument, dependent: :delete
+
+    # Validation
+    validates :price, presence: true
+    validates :quantity, numericality: { only_integer: true }
+  end
+
+  create_table "instrument_carts", force: :cascade do |t|
+    t.decimal "price"
+    t.integer "quantity"
+    t.integer "instrument_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instrument_id"], name: "index_instrument_carts_on_instrument_id"
+  end
+
+### order model
+  class Order < ApplicationRecord
+    belongs_to :user
+    belongs_to :cart
+    belongs_to :orderstatus
+
+    has_one :cart, dependent: :delete
+    has_one :user, dependent: :delete
+    has_one :orderstatus, dependent: :delete
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "cart_id", null: false
+    t.integer "orderstatus_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["orderstatus_id"], name: "index_orders_on_orderstatus_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
