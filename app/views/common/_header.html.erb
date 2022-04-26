@@ -39,6 +39,10 @@
             <p>Logged in as <strong class="has-text-link"><%= current_user.email %></strong></p>
           </div>
         </div>
+
+        <div class="navbar-item">
+          <%= link_to "Cart", {}, class: "button is-info is-rounded" %>
+        </div>
       <% end %>
 
       <div class="navbar-item">
