@@ -6,15 +6,76 @@
 
     <% if page.title == "About" %>
       <p>
+        Welcome to DibbyNote Inc, your number one source for all things that a musician could ever want. We're dedicated to providing you the very best of instruments, with an emphasis on quality, service, and swag.
 
+        <br><br>
+        Founded in 2022 by <i>davmz</i>, DibbyNote Inc has come a long way from its beginnings in planet earth. When davmz first started out, his passion for [brand message - e.g. "eco-friendly cleaning products"] drove them to start their own business.
+
+        <br><br>
+        We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
+
+        <br><br>
+        Sincerely,
+        <br><br><br>
+        <strong>#{INSERT FOUNDER NAME HERE}</strong>
+        <br><br>
+        <i>#{INSERT SIGNATURE HERE}</i>
       </p>
+
+      <div class="has-text-centered mt-6">
+        <h1 class="title is-1">Side Note: Shopping Cart is not functional</h1>
+        <p>We will fire the full-stack developer</p>
+        <a href="https://imgur.com/C9crG7k" class="button is-primary">Petition to fire</a>
+      </div>
     <% elsif page.title == "Contact" %>
-      <p>
-        24/7 Customer Service Support. We are ALWAYS to help for any questions
-        you may have. If you run into any problems or technical difficulties
-        with the application please let us know right away and we will fix the
-        issue right away.
-      </p>
+      <div class="columns">
+        <div class="column is-three-fifths">
+          <h3 class="title is-3">
+            Whenever you need us, we're here for you and your
+            Musical Instrument needs
+          </h3>
+        </div>
+
+        <div class="column">
+          <p>
+            24/7 Customer Service Support. We are ALWAYS to help for any questions
+            you may have. If you run into any problems or technical difficulties
+            with the application please let us know right away and we will fix the
+            issue right away.
+          </p>
+        </div>
+      </div>
+
+      <div class="columns has-text-centered">
+        <div class="column">
+          <h4 class="title is-4">Technical Support Team</h4>
+          <img src="https://engagers.co.uk/wp-content/uploads/2020/07/Tech-Support-Team.jpg">
+
+          <p>Using our website and experiencing technical issues?</p>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Find helpful resources</a>
+
+          <%= button_to "Raise a support ticket", {}, class: "button is-link is-outlined mt-4" %>
+        </div>
+
+        <div class="column has-text-centered">
+          <h4 class="title is-4">Price, billing & licensing</h4>
+          <img src="https://woodgundyadvisors.cibc.com/documents/525322/525385/Our+Team+2021+web+450+border.png/855b0a80-33b1-4d20-aff8-4df23d3c3429?t=1635451045567">
+
+          <p>Have a pricing question or need help managing your account?</p>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Find answers</a>
+
+          <%= button_to "Contact Us", {}, class: "button is-link is-outlined mt-4" %>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="title is-3">Office Locations</h3>
+
+        <h5 class="title is-5">Somewhere over the rainbow 🌈, Earth</h5>
+        <p>123 ABC, EA 402481</p>
+        <p>Office: (204) 632-3960</p>
+        <p>Sales/Support: <a href = "mailto: custsupp.dibbynote@gmail.com">custsupp.dibbynote@gmail.com</a></p>
+      </div>
     <% else %>
       <p>
 
