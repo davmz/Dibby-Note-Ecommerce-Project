@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subtotal: 9.99
+  total: 9.99
+  tax: 9.99
+  user: one
+  instrument_cart: one
+
+two:
+  subtotal: 9.99
+  total: 9.99
+  tax: 9.99
+  user: two
+  instrument_cart: two
