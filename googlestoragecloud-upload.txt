@@ -1,1 +1,0 @@
-https://medium.com/@iachieve80/rails-6-0-upload-images-using-active-storage-and-google-cloud-services-tutorial-538f818a6f30
