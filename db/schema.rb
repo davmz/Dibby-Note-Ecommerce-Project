@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_12_210417) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_26_081011) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -75,6 +75,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_210417) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.decimal "subtotal"
+    t.decimal "total"
+    t.decimal "tax"
+    t.integer "user_id", null: false
+    t.integer "instrument_item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instrument_item_id"], name: "index_carts_on_instrument_item_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "instrument_items", force: :cascade do |t|
+    t.decimal "unitprice"
+    t.integer "quantity"
+    t.decimal "totalprice"
+    t.integer "instrument_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instrument_id"], name: "index_instrument_items_on_instrument_id"
+  end
+
   create_table "instruments", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -88,6 +110,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_210417) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "orderstatus_id", null: false
+    t.integer "cart_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["orderstatus_id"], name: "index_orders_on_orderstatus_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -153,7 +184,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_210417) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "carts", "instrument_items"
+  add_foreign_key "carts", "users"
+  add_foreign_key "instrument_items", "instruments"
   add_foreign_key "instruments", "types"
+  add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "orderstatuses"
   add_foreign_key "taxes", "provinces"
   add_foreign_key "users", "provinces"
 end
