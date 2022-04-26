@@ -3,7 +3,6 @@ require "csv"
 ## Destory Model Tables
 AdminUser.destroy_all
 
-Lesson.destroy_all
 Instrument.destroy_all
 Type.destroy_all
 
@@ -51,15 +50,6 @@ instruments.each do |i|
   ## Add Images saved on file to each specific instrument
   instrument.image.attach(io:       File.open(Rails.root.join("db/#{i['Image_File']}")),
                           filename: "m-#{[instrument.name, type.name]}.png")
-
-  lesson = instrument.create_lesson(
-    price: Faker::Number.decimal(l_digits: 1, r_digits: 2)
-  )
-
-  unless lesson.valid?
-    Rails.logger.debug "Invalid Instrument Lesson for #{instrument.name}"
-    next
-  end
 end
 
 provinces.each do |p|
@@ -118,7 +108,6 @@ Page.create(
 ## Creation Model Table Counter
 Rails.logger.debug "Created #{Type.count} Types"
 Rails.logger.debug "Created #{Instrument.count} Instruments"
-Rails.logger.debug "Created #{Lesson.count} Lessons"
 
 Rails.logger.debug "Created #{Province.count} Provinces"
 Rails.logger.debug "Created #{Tax.count} Sales Tax"

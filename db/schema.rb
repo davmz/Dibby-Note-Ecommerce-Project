@@ -75,28 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_210417) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "carts", force: :cascade do |t|
-    t.decimal "totalprice"
-    t.decimal "taxprice"
-    t.integer "user_id", null: false
-    t.integer "instrumentcart_id", null: false
-    t.integer "lesson_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["instrumentcart_id"], name: "index_carts_on_instrumentcart_id"
-    t.index ["lesson_id"], name: "index_carts_on_lesson_id"
-    t.index ["user_id"], name: "index_carts_on_user_id"
-  end
-
-  create_table "instrument_carts", force: :cascade do |t|
-    t.decimal "price"
-    t.integer "quantity"
-    t.integer "instrument_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["instrument_id"], name: "index_instrument_carts_on_instrument_id"
-  end
-
   create_table "instruments", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -106,29 +84,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_210417) do
     t.index ["type_id"], name: "index_instruments_on_type_id"
   end
 
-  create_table "lessons", force: :cascade do |t|
-    t.decimal "price"
-    t.integer "instrument_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["instrument_id"], name: "index_lessons_on_instrument_id"
-  end
-
   create_table "order_statuses", force: :cascade do |t|
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "cart_id", null: false
-    t.integer "orderstatus_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
-    t.index ["orderstatus_id"], name: "index_orders_on_orderstatus_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -194,15 +153,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_210417) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "carts", "instrumentcarts"
-  add_foreign_key "carts", "lessons"
-  add_foreign_key "carts", "users"
-  add_foreign_key "instrument_carts", "instruments"
   add_foreign_key "instruments", "types"
-  add_foreign_key "lessons", "instruments"
-  add_foreign_key "orders", "carts"
-  add_foreign_key "orders", "orderstatuses"
-  add_foreign_key "orders", "users"
   add_foreign_key "taxes", "provinces"
   add_foreign_key "users", "provinces"
 end
