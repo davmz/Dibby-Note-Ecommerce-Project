@@ -1,0 +1,7 @@
+const stripe = Stripe('<%= ENV["PUBLISHABLE_KEY"] %>');
+
+stripe.redirectToCheckout({
+  sessionId: '<%= @session.id %>'
+}).then(function(result){
+  console.log(result.error.message);
+})

@@ -1,2 +1,9 @@
-<h1>Checkout#success</h1>
-<p>Find me in app/views/checkout/success.html.erb</p>
+<h1>Your Shopping Cart has been Ordered</h1>
+<p>Please review your order for any mistakes that might possibly occur during
+the process.</p>
+
+<h1>
+  Yay! we have you money 💰
+  <%= debug @session %>
+  <%= debug @payment_intent %>
+</h1>

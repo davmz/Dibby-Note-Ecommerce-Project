@@ -36,15 +36,23 @@
 
         <p><b>In Stock</b></p>
 
-        <% if user_signed_in? %>
-          <% if @cart.include?(@instrument) %>
-            <%= button_to "Remove from Cart", remove_from_cart_path(@instrument), method: :delete, class: "button is-danger" %>
+        <div class="my-5">
+          <% if user_signed_in? %>
+            <% if @cart.include?(@instrument) %>
+              <%= button_to "Remove from Cart", remove_from_cart_path(@instrument), method: :delete, class: "button is-danger" %>
+            <% else %>
+              <%= button_to "Add to Cart", add_to_cart_path(@instrument), class: "button is-primary" %>
+
+              <%= form_with url: checkout_create_path, remote: true do %>
+                <%= hidden_field_tag(:instrument_id, @instrument.id) %>
+                <%= button_tag 'Buy Now 💳' %>
+              <% end %>
+            <% end %>
           <% else %>
-            <%= button_to "Add to Cart", add_to_cart_path(@instrument), class: "button is-primary" %>
+            <%= link_to "Sign In to Purchase", new_user_session_path, class: "button is-link is-rounded" %>
           <% end %>
-        <% else %>
-          <%= link_to "Sign In to Purchase", new_user_session_path, class: "button is-link is-rounded" %>
-        <% end %>
+        </div>
+
 
         <p>Secure Transaction</p>
         <p>Ships from Canada and sold by <%= link_to "DibbyNote", root_path %></p>
