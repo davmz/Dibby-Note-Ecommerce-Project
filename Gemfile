@@ -121,6 +121,9 @@ group :production do
   gem 'pg', '~> 1.3', '>= 1.3.5'
 end
 
+## rake - https://rubygems.org/gems/rake
+gem 'rake', '~> 13.0', '>= 13.0.6'
+
 ### Unused Gems throughout application
 ## MailJet API
 # gem 'mailjet', '~> 1.6'
