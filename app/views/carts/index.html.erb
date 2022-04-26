@@ -8,12 +8,11 @@
 
   <div class="columns mt-5">
     <div class="column is-three-fifths">
-      <table>
+      <table class="table is-striped is-fullwidth is-hoverable">
         <thead>
           <tr>
             <th>Instrument Name</th>
             <th>Price</th>
-            <th>Quantity</th>
           </tr>
         </thead>
         <tbody>
@@ -27,20 +26,31 @@
       </table>
     </div>
 
-    <div class="column">
+    <div class="column has-background-white	">
       <div>
         <div>
-          <% @cart.each do | total | %>
-            <% @total_price += total.price %>
+          <h3 class="title is-3">Order Summary</h3>
+          <p>Shipping to: <%= current_user.address %></p>
+          <p>Total before tax: (<%= @cart.size %>): <sup>$</sup><%= @total_price %></p>
+          <hr>
+          <% if @province.tax.gst.present? %>
+            <p>GST: <%= calculate_gst %></p>
           <% end %>
 
-          <h4 class="title is-4">
-            Subtotal (<%= @cart.size %>): <sup>$</sup><%= @total_price %>
-          </h4>
+          <% if @province.tax.hst.present? %>
+            <p>HST: <%= calculate_hst %></p>
+          <% end %>
+
+          <% if @province.tax.pst.present? %>
+            <p>PST: <%= calculate_pst %></p>
+          <% end %>
+          <h6 class="title is-6">Total Tax: <%= calculate_totaltax %></h6>
+          <hr>
+          <h4 class="title is-4">Order Total: <%= calculate_total %></h4>
         </div>
 
-        <div>
-          <%= link_to "Proceed to Checkout", {}, class: "button is-success" %>
+        <div class="mt-4">
+          <%= link_to "Place your order", {}, class: "button is-success" %>
           <%= link_to "Keep Searching", instruments_path, class: "button is-dark" %>
         </div>
       </div>
