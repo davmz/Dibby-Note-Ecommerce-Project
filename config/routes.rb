@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'checkout/create'
+  get 'checkout/success'
+  get 'checkout/cancel'
   resources :users, only: [:index]
 
   devise_for :users, controllers: { confirmations: 'users/confirmations' }
