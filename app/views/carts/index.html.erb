@@ -19,8 +19,8 @@
         <tbody>
           <% @cart.each do | item | %>
             <tr>
-              <td><%= item.name %></td>
-              <td><%= item.price %></td>
+              <td><%= link_to item.name, instrument_path(item.id) %></td>
+              <td><sup>$</sup><%= item.price %></td>
             </tr>
           <% end %>
         </tbody>

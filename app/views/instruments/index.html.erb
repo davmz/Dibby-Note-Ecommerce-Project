@@ -44,7 +44,6 @@
             <th>Price</th>
             <th>Family</th>
             <th>Image</th>
-            <th>Shopping Cart</th>
           </tr>
         </thead>
 
@@ -59,18 +58,6 @@
                   <%= image_tag instrument.image_pagination_display, alt: instrument.name %>
                 <% else %>
                   No Image Associated to this instrument
-                <% end %>
-              </td>
-
-              <td>
-                <% if user_signed_in? %>
-                  <% if @cart.include?(instrument) %>
-                    <%= button_to "Remove from Cart", remove_from_cart_path(instrument), method: :delete, class: "button is-danger" %>
-                  <% else %>
-                    <%= button_to "Add to Cart", add_to_cart_path(instrument), class: "button is-primary" %>
-                  <% end %>
-                <% else %>
-                  <%= link_to "Sign In to Purchase", new_user_session_path, class: "button is-link is-rounded" %>
                 <% end %>
               </td>
             </tr>

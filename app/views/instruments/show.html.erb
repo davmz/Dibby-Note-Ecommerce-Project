@@ -37,15 +37,13 @@
         <p><b>In Stock</b></p>
 
         <% if user_signed_in? %>
-          <% if user_signed_in? %>
-            <% if @cart.include?(@instrument) %>
-              <%= button_to "Remove from Cart", remove_from_cart_path(@instrument), method: :delete %>
-            <% else %>
-              <%= button_to "Add to Cart", add_to_cart_path(@instrument) %>
-            <% end %>
+          <% if @cart.include?(@instrument) %>
+            <%= button_to "Remove from Cart", remove_from_cart_path(@instrument), method: :delete, class: "button is-danger" %>
           <% else %>
-            <%= link_to "Sign In to Purchase", new_user_session_path, class: "button is-link is-rounded" %>
+            <%= button_to "Add to Cart", add_to_cart_path(@instrument), class: "button is-primary" %>
           <% end %>
+        <% else %>
+          <%= link_to "Sign In to Purchase", new_user_session_path, class: "button is-link is-rounded" %>
         <% end %>
 
         <p>Secure Transaction</p>
