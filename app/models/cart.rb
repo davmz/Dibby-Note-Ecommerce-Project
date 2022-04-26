@@ -3,7 +3,6 @@ class Cart < ApplicationRecord
   belongs_to :instrument_item
 
   has_one :user, dependent: :delete
-  has_many :lesson, dependent: :nullify
   has_many :instrumentcart, dependent:
                                       :destroy
 
