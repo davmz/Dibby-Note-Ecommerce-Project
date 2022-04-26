@@ -22,7 +22,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  <%= ENV['DATABASE_URL'] %> #postgre://user:password@host:123
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %> #postgre://user:password@host:123
 
 ## Before Heroku
 # production:
