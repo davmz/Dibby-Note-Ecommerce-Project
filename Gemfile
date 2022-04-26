@@ -113,6 +113,9 @@ gem 'carrierwave', '~> 2.2', '>= 2.2.2'
 ## aws-sdk-s3 - https://rubygems.org/gems/aws-sdk-s3
 gem 'aws-sdk-s3', '~> 1.113', require: false
 
+## Stripe - https://rubygems.org/gems/stripe
+gem 'stripe', '~> 5.53'
+
 ### Unused Gems throughout application
 ## MailJet API
 # gem 'mailjet', '~> 1.6'
