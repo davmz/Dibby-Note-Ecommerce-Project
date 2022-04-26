@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :initialize_session
-  protect_from_forgery
+
   helper_method :dibby_pages
   helper_method :cart
+
   add_breadcrumb "Home", :root_path
+
+  include ApplicationHelper
 
   protected
 

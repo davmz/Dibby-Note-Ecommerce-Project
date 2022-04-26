@@ -3,6 +3,7 @@ class Instrument < ApplicationRecord
   belongs_to :type
 
   has_one :lesson, dependent: :delete
+  has_many :instrument_item, dependent: :destroy
 
   # Validation
   validates :name, :price, presence: true
