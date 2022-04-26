@@ -116,6 +116,9 @@ gem 'aws-sdk-s3', '~> 1.113', require: false
 ## Stripe - https://rubygems.org/gems/stripe
 gem 'stripe', '~> 5.53'
 
+## pg (PostgreSQL RDBMS) - https://rubygems.org/gems/pg
+gem 'pg', '~> 1.3', '>= 1.3.5'
+
 ### Unused Gems throughout application
 ## MailJet API
 # gem 'mailjet', '~> 1.6'

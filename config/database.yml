@@ -22,6 +22,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
-  timeout: 10000
+  <%= ENV['DATABASE_URL'] %> #postgre://user:password@host:123
+
+## Before Heroku
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
+#   timeout: 10000
