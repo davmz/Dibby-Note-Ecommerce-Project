@@ -1,7 +1,13 @@
 class CheckoutController < ApplicationController
-  def create; end
+  def create
 
-  def success; end
+  end
 
-  def cancel; end
+  def success
+
+  end
+
+  def cancel
+
+  end
 end
