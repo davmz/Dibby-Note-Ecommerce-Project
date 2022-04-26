@@ -30,9 +30,13 @@
     <div class="column">
       <div>
         <div>
-          <h1>Subtotal (<%= @cart.size %>):</h1>
+          <% @cart.each do | total | %>
+            <% @total_price += total.price %>
+          <% end %>
 
-          <p>Total Price Calculation</p>
+          <h4 class="title is-4">
+            Subtotal (<%= @cart.size %>): <sup>$</sup><%= @total_price %>
+          </h4>
         </div>
 
         <div>

@@ -3,5 +3,7 @@ class CartsController < ApplicationController
     add_breadcrumb "Cart", :instruments_path
 
     @cart = Instrument.find(session[:cart])
+
+    @total_price = 0
   end
 end
