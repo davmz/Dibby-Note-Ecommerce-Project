@@ -14,7 +14,7 @@ class CheckoutController < ApplicationController
       cancel_url: checkout_cancel_url,
       line_items: [
         name: instrument.name,
-        description: instrument.description,
+        description: instrument.name,
         amount: instrument.price * 100.to_i, #price * 100.to_i
         currency: "cad",
         quantity: 1

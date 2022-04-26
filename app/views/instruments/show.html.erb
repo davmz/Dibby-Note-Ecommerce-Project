@@ -45,7 +45,7 @@
 
               <%= form_with url: checkout_create_path, remote: true do %>
                 <%= hidden_field_tag(:instrument_id, @instrument.id) %>
-                <%= button_tag 'Buy Now 💳' %>
+                <%= button_tag 'Buy Now 💳', class: "button is-info mt-2" %>
               <% end %>
             <% end %>
           <% else %>
